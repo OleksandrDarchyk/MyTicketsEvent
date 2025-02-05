@@ -3,7 +3,7 @@ package dk.easv.myticketsevent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class LoginViewController {
     @FXML
     private Label welcomeText;
 
