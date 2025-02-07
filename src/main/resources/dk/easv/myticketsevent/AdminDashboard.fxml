@@ -13,14 +13,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.AdminDController">
    <children>
       <ScrollPane layoutX="47.0" layoutY="14.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
             <VBox prefHeight="600.0" prefWidth="800.0">
                <children>
-                  <HBox prefHeight="12.0" prefWidth="801.0">
+                  <HBox prefHeight="45.0" prefWidth="800.0">
                      <children>
                         <ImageView fitHeight="45.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -28,14 +27,14 @@
                            </image>
                         </ImageView>
                         <MFXButton prefHeight="45.0" prefWidth="145.0" text="Create User" />
-                        <MFXButton prefHeight="43.0" prefWidth="111.0" text="LogOut">
+                        <MFXButton prefHeight="45.0" prefWidth="145.0" text="LogOut">
                            <HBox.margin>
                               <Insets left="390.0" />
                            </HBox.margin>
                            <graphic>
-                              <ImageView fitHeight="34.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="38.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../target/classes/dk/easv/myticketsevent/picture/logout.png" />
+                                    <Image url="@picture/logout.png" />
                                  </image>
                               </ImageView>
                            </graphic>

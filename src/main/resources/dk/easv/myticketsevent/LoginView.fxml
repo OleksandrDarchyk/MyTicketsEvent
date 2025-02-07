@@ -8,14 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox fx:id="loginVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.LoginViewController">
    <children>
       <AnchorPane prefHeight="320.0" prefWidth="600.0">
          <children>
-            <MFXTextField layoutX="223.0" layoutY="186.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="178.0" text="Username" />
-            <MFXPasswordField layoutX="223.0" layoutY="229.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="178.0" text="Password" />
-            <MFXButton layoutX="273.0" layoutY="279.0" text="Log in" />
+            <MFXTextField fx:id="usernameField" layoutX="223.0" layoutY="186.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="178.0" text="Username" />
+            <MFXPasswordField fx:id="passwordField" layoutX="223.0" layoutY="229.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="178.0" text="Password" />
+            <MFXButton fx:id="loginButton" layoutX="273.0" layoutY="279.0" onAction="#login" text="Log in" />
             <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="171.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@picture/Login.png" />
