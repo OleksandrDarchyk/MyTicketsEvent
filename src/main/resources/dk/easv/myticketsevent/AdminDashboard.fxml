@@ -41,7 +41,7 @@
                         </MFXButton>
                      </children>
                   </HBox>
-                  <GridPane prefHeight="532.0" prefWidth="800.0">
+                  <GridPane fx:id="gridPaneAdmin" prefHeight="532.0" prefWidth="800.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="424.0" minWidth="10.0" prefWidth="398.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="426.0" minWidth="10.0" prefWidth="402.0" />

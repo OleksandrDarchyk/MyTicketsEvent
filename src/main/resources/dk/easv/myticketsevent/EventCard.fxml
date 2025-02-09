@@ -10,7 +10,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="168.0" prefWidth="367.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.EventCardController">
    <children>
       <ImageView fitHeight="141.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true" />
-      <MFXButton fx:id="deleteBtn" layoutX="318.0" layoutY="134.0" onAction="#deleteEvent" prefHeight="37.0" prefWidth="43.0" text="">
+      <MFXButton fx:id="deleteBtn" layoutX="318.0" layoutY="123.0" onAction="#deleteEvent" prefHeight="37.0" prefWidth="43.0" text="">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -19,7 +19,7 @@
             </ImageView>
          </graphic>
       </MFXButton>
-      <Label fx:id="eventNamelbl" layoutX="152.0" layoutY="6.0" prefHeight="25.0" prefWidth="211.0" text="Name" />
+      <Label fx:id="eventNamelbl" layoutX="152.0" layoutY="2.0" prefHeight="25.0" prefWidth="211.0" text="Name" />
       <HBox layoutX="146.0" layoutY="139.0" prefHeight="25.0" prefWidth="124.0">
          <children>
             <ImageView fitHeight="27.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
@@ -30,8 +30,8 @@
             <Label fx:id="eventTimelbl" prefHeight="27.0" prefWidth="116.0" text="Label" />
          </children>
       </HBox>
-      <Label fx:id="eventLocationlbl" layoutX="153.0" layoutY="30.0" prefHeight="25.0" prefWidth="211.0" text="Place" />
-      <MFXButton layoutX="152.0" layoutY="57.0" prefHeight="27.0" prefWidth="211.0" text="manage events" />
+      <Label fx:id="eventLocationlbl" layoutX="152.0" layoutY="27.0" prefHeight="25.0" prefWidth="211.0" text="Place" />
+      <MFXButton layoutX="152.0" layoutY="52.0" prefHeight="27.0" prefWidth="211.0" text="manage events" />
       <MFXButton layoutY="140.0" prefHeight="27.0" prefWidth="146.0" text="extra information" />
    </children>
 </Pane>
