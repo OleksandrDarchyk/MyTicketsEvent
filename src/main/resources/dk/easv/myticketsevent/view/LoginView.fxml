@@ -17,17 +17,17 @@
             <MFXButton fx:id="loginButton" layoutX="273.0" layoutY="279.0" onAction="#login" text="Log in" />
             <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="171.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@picture/Login.png" />
+                  <Image url="@../picture/Login.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="171.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@picture/password.png" />
+                  <Image url="@../picture/password.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="125.0" fitWidth="214.0" layoutX="193.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@picture/MyEventTicket.png" />
+                  <Image url="@../picture/MyEventTicket.png" />
                </image>
             </ImageView>
          </children>

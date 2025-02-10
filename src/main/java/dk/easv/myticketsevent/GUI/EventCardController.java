@@ -51,7 +51,7 @@ public class EventCardController {
         try {
             System.out.println("DEBUG: Відкриваю ManageEvents.fxml...");
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/ManageEvents.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/ManageEvents.fxml"));
             Parent root = loader.load();
 
             // Отримуємо контролер ManageEventController

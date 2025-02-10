@@ -52,7 +52,7 @@ public class AdminDController implements Initializable {
 
         for (Event event : eventList) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/EventCard.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/EventCard.fxml"));
                 Pane eventCard = fxmlLoader.load();
 
                 // Передаємо дані у EventCardController
@@ -74,7 +74,7 @@ public class AdminDController implements Initializable {
 
     public void createCoordinator(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/CreateCoordinator.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/CreateCoordinator.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage stage = new Stage();

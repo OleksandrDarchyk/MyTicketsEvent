@@ -58,7 +58,7 @@ public class CoordinatorDashboardController implements Initializable {
 
         for (Event event : eventList) { // Використовуємо локальний список подій
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/EventCard.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/EventCard.fxml"));
                 Pane eventCard = fxmlLoader.load();
 
                 // Передаємо дані у `EventCardController`
@@ -80,7 +80,7 @@ public class CoordinatorDashboardController implements Initializable {
 
     public void openCreateEvent(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/CreateEvent.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/CreateEvent.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage stage = new Stage();
