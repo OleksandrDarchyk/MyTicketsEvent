@@ -34,7 +34,10 @@
          </children>
       </HBox>
       <Label fx:id="eventLocationlbl" layoutX="152.0" layoutY="27.0" prefHeight="25.0" prefWidth="211.0" text="Place" />
-      <MFXButton layoutX="152.0" layoutY="52.0" prefHeight="27.0" prefWidth="211.0" text="manage events" />
+      <MFXButton fx:id="btnManageEvents"
+                 text="Manage Events"
+                 onAction="#openManageEvents"
+                 prefHeight="45.0" prefWidth="145.0"/>
       <MFXButton layoutY="140.0" prefHeight="27.0" prefWidth="146.0" text="extra information" />
    </children>
 </Pane>

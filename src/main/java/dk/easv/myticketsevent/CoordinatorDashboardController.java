@@ -3,11 +3,17 @@ package dk.easv.myticketsevent;
 
 import dk.easv.myticketsevent.BE.Coordinator;
 import dk.easv.myticketsevent.BE.Event;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +28,9 @@ public class CoordinatorDashboardController implements Initializable {
 
     private Coordinator coordinator;
     private List<Event> eventList = new ArrayList<>(); // Список подій без BLL/DAL
+
+    @FXML
+    private MFXButton btnCreateEvent;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -68,4 +77,23 @@ public class CoordinatorDashboardController implements Initializable {
             }
         }
     }
-}
+
+    public void openCreateEvent(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/CreateEvent.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL); // Відкриває вікно як модальне
+            stage.setTitle("Create Event");
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("❌ Error loading CreateEvent.fxml");
+        }
+    }
+    }
+

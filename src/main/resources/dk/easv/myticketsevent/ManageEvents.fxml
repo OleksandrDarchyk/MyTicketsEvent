@@ -2,27 +2,51 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.ManageEventsConytroller">
+<AnchorPane id="AnchorPane" fx:id="eventInfoAnchorPane" prefHeight="500.0" prefWidth="700.0"
+            xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dk.easv.myticketsevent.ManageEventController">
    <children>
-      <Label layoutX="42.0" layoutY="32.0" prefHeight="36.0" prefWidth="122.0" text="Label" />
-      <VBox layoutX="29.0" layoutY="68.0" prefHeight="270.0" prefWidth="193.0">
+      <!-- Блок інформації про подію -->
+      <VBox layoutX="20.0" layoutY="20.0" prefWidth="300.0" spacing="10">
          <children>
-            <Label prefHeight="9.0" prefWidth="28.0" text="Time" />
-            <Label text="Place" />
-            <Label text="How to coming" />
-            <Label text="Extra information" />
+            <Label fx:id="eventTitleLabel" text="Event Name" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <MFXTextField fx:id="txtLocation" floatMode="BORDER" floatingText="Location"/>
+            <MFXTextField fx:id="txtDate" floatMode="BORDER" floatingText="Date &amp; Time"/>
+            <MFXComboBox fx:id="comboAssignCoordinator" floatMode="BORDER" floatingText="Assign Coordinator"/>
          </children>
       </VBox>
-      <MFXButton layoutX="29.0" layoutY="354.0" text="Print ticket" />
-      <MFXButton layoutX="134.0" layoutY="355.0" text="Get coupon" />
-      <MFXTextField layoutX="284.0" layoutY="68.0" prefHeight="270.0" prefWidth="294.0" />
-      <MFXTextField layoutX="420.0" layoutY="7.0" prefHeight="27.0" prefWidth="160.0" />
-      <MFXButton layoutX="360.0" layoutY="19.0" />
-      <MFXButton layoutX="300.0" layoutY="20.0" />
+
+      <!-- Список учасників -->
+      <VBox layoutX="350.0" layoutY="20.0" prefWidth="300.0" spacing="10">
+         <children>
+            <Label text="Participants" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <ListView fx:id="participantsList" prefHeight="250.0"/>
+            <HBox spacing="10">
+               <TextField fx:id="searchField" promptText="Add participant" prefWidth="200.0"/>
+               <MFXButton text="Add" onAction="#addParticipant"/>
+            </HBox>
+            <MFXButton text="Remove Selected" onAction="#deleteParticipant"/>
+         </children>
+      </VBox>
+
+      <!-- Панель дій -->
+      <HBox layoutX="20.0" layoutY="400.0" spacing="10">
+         <children>
+            <MFXButton text="Save Changes" onAction="#saveEvent"/>
+            <MFXButton text="Delete Event" onAction="#deleteEvent"/>
+            <MFXButton fx:id="closeButton" text="Close" onAction="#close"/>
+            <MFXButton fx:id="btnGetTicket" text="Get Ticket" onAction="#getTicket"/>
+            <MFXButton fx:id="btnGetCoupon" text="Get Coupon" onAction="#getCoupon"/>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

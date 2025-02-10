@@ -26,7 +26,11 @@
                                         <Image url="@picture/WelcomeAdmin.png" />
                                     </image>
                                 </ImageView>
-                                <MFXButton prefHeight="45.0" prefWidth="145.0" text="Create Event" />
+                                <MFXButton fx:id="btnCreateEvent"
+                                           text="Create Event"
+                                           onAction="#openCreateEvent"
+                                           prefHeight="45.0" prefWidth="145.0"/>
+
                                 <MFXButton prefHeight="45.0" prefWidth="145.0" text="LogOut">
                                     <HBox.margin>
                                         <Insets left="390.0" />
