@@ -2,7 +2,7 @@ package dk.easv.myticketsevent;
 
 
 
-import javafx.event.Event;
+import dk.easv.myticketsevent.BE.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -43,7 +43,7 @@ public class AdminDController implements Initializable {
 
         for (Event event : eventList) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/view/EventCard.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/EventCard.fxml"));
                 Pane eventCard = fxmlLoader.load();
 
                 // Передаємо дані у EventCardController

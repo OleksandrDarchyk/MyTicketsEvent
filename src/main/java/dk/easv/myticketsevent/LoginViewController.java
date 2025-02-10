@@ -8,9 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.awt.event.ActionEvent;
 import java.io.IOException;
+
 
 public class LoginViewController {
     @FXML
@@ -24,23 +23,29 @@ public class LoginViewController {
 
     @FXML
     public void login(javafx.event.ActionEvent actionEvent) {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
+        String username = usernameField.getText().trim();  // Видаляємо зайві пробіли
+        String password = passwordField.getText().trim();
+
+        System.out.println("DEBUG: Введений логін = [" + username + "]");
+        System.out.println("DEBUG: Введений пароль = [" + password + "]");
 
         if ("a".equals(username) && "123".equals(password)) {
-            openDashboard("dk/easv/myticketsevent/AdminDashboard.fxml", "Admin Dashboard");
+            openDashboard("/dk/easv/myticketsevent/AdminDashboard.fxml", "Admin Dashboard");
         } else if ("c".equals(username) && "123".equals(password)) {
-            openDashboard("dk/easv/myticketsevent/CoordinatorDashboard.fxml", "Coordinator Dashboard");
+            openDashboard("/dk/easv/myticketsevent/CoordinatorDashboard.fxml", "Coordinator Dashboard");
         } else {
             System.out.println("Wrong username or password");
         }
     }
 
+
     private void openDashboard(String fxmlPath, String title) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/" + fxmlPath));
+            System.out.println("DEBUG: Завантажую FXML -> " + fxmlPath); // Вивід у консоль
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             if (loader.getLocation() == null) {
-                throw new IOException("❌ FXML file not found: " + fxmlPath);
+                throw new IOException("❌ FXML-файл не знайдено: " + fxmlPath);
             }
 
             Parent root = loader.load();
@@ -55,7 +60,9 @@ public class LoginViewController {
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("❌ Error loading: " + fxmlPath);
+            System.out.println("❌ Помилка завантаження: " + fxmlPath);
         }
     }
+
+
 }
