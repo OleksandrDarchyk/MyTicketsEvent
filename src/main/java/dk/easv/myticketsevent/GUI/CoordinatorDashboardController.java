@@ -1,4 +1,4 @@
-package dk.easv.myticketsevent;
+package dk.easv.myticketsevent.GUI;
 
 
 import dk.easv.myticketsevent.BE.Coordinator;

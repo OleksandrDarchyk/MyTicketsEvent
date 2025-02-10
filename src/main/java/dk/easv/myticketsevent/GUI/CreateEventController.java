@@ -1,4 +1,4 @@
-package dk.easv.myticketsevent;
+package dk.easv.myticketsevent.GUI;
 
 import io.github.palexdev.materialfx.controls.*;
 import javafx.fxml.FXML;

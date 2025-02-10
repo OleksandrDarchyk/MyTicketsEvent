@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="eventInfoAnchorPane" prefHeight="500.0" prefWidth="700.0"
             xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="dk.easv.myticketsevent.ManageEventController">
+            fx:controller="dk.easv.myticketsevent.GUI.ManageEventController">
    <children>
       <!-- Блок інформації про подію -->
       <VBox layoutX="20.0" layoutY="20.0" prefWidth="300.0" spacing="10">

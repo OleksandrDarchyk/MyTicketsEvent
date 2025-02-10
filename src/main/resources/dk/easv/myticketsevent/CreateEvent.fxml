@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:controller="dk.easv.myticketsevent.CreateEventController" fx:id="leftVBox" prefWidth="300.0" spacing="10.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:controller="dk.easv.myticketsevent.GUI.CreateEventController" fx:id="leftVBox" prefWidth="300.0" spacing="10.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MFXTextField fx:id="txtEventName" floatMode="BORDER" floatingText="Event name" maxWidth="1.7976931348623157E308" textLimit="30" />
       <MFXTextField fx:id="txtLocation" floatMode="BORDER" floatingText="Location" maxWidth="1.7976931348623157E308" textLimit="20" />

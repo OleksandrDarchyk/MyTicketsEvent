@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="250.0" prefWidth="433.0"
             xmlns="http://javafx.com/javafx/22"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="dk.easv.myticketsevent.CreateCoordinatorController">
+            fx:controller="dk.easv.myticketsevent.GUI.CreateCoordinatorController">
 
    <children>
       <VBox alignment="CENTER" layoutY="25.0" prefHeight="167.0" prefWidth="433.0">
