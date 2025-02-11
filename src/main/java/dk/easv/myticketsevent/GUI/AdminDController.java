@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -74,15 +75,12 @@ public class AdminDController implements Initializable {
 
     public void createCoordinator(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/CreateCoordinator.fxml"));
-            Parent root = fxmlLoader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/CreateCoordinator.fxml"));
+            Node newContent = loader.load();
 
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL); // Діалогове вікно
-            stage.setTitle("Create Coordinator");
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.show();
+            // Очищаємо gridPaneAdmin і додаємо новий вміст
+            gridPaneAdmin.getChildren().clear();
+            gridPaneAdmin.add(newContent, 0, 0, 2, 1); // Займає 2 колонки
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("❌ Error loading CreateCoordinator.fxml");
