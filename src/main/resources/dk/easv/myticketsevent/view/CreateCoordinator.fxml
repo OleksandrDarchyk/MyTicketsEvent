@@ -7,27 +7,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="250.0" prefWidth="433.0"
-            xmlns="http://javafx.com/javafx/22"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="dk.easv.myticketsevent.GUI.CreateCoordinatorController">
+<AnchorPane prefHeight="553.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.CreateCoordinatorController">
 
    <children>
-      <VBox alignment="CENTER" layoutY="25.0" prefHeight="167.0" prefWidth="433.0">
+      <VBox alignment="CENTER" layoutX="184.0" layoutY="193.0" prefHeight="167.0" prefWidth="433.0">
          <children>
-            <MFXTextField fx:id="coordinatorNameField"
-                          prefHeight="0.0" prefWidth="204.0"
-                          promptText="Name" />
+            <MFXTextField fx:id="coordinatorNameField" prefHeight="0.0" prefWidth="204.0" promptText="Name" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <MFXPasswordField fx:id="passwordField"
-                                    prefHeight="51.0" prefWidth="201.0"
-                                    promptText="Password" />
+                  <MFXPasswordField fx:id="passwordField" prefHeight="51.0" prefWidth="201.0" promptText="Password" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <MFXButton layoutX="257.0" layoutY="198.0" text="Create" onAction="#createCoordinator" />
-      <MFXButton layoutX="118.0" layoutY="199.0" text="Cancel" onAction="#cancel" />
+      <MFXButton layoutX="460.0" layoutY="360.0" onAction="#createCoordinator" text="Create" />
+      <MFXButton layoutX="274.0" layoutY="360.0" onAction="#cancel" text="Cancel" />
    </children>
 </AnchorPane>

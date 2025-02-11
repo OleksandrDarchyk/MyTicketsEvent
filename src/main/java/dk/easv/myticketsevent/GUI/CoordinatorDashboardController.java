@@ -51,31 +51,7 @@ public class CoordinatorDashboardController implements Initializable {
     }
 
     public void populateGridPane() {
-        gridPaneCoord.getChildren().clear(); // Очищуємо GridPane перед завантаженням нових карток
-        int numRows = 4;
-        int numColumns = 2;
-        int col = 0, row = 0;
 
-        for (Event event : eventList) { // Використовуємо локальний список подій
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/EventCard.fxml"));
-                Pane eventCard = fxmlLoader.load();
-
-                // Передаємо дані у `EventCardController`
-                EventCardController controller = fxmlLoader.getController();
-                controller.setEvent(event);
-
-                // Додаємо картку в `GridPane`
-                gridPaneCoord.add(eventCard, col, row);
-                col++;
-                if (col == numColumns) {
-                    col = 0;
-                    row++;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public void openCreateEvent(ActionEvent actionEvent) {
@@ -95,5 +71,8 @@ public class CoordinatorDashboardController implements Initializable {
             System.out.println("❌ Error loading CreateEvent.fxml");
         }
     }
+
+    public void createCoordinator(ActionEvent actionEvent) {
     }
+}
 
