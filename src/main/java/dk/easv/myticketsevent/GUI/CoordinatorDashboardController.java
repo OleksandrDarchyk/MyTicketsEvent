@@ -8,8 +8,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -25,6 +27,13 @@ public class CoordinatorDashboardController implements Initializable {
 
     @FXML
     private GridPane gridPaneCoord; // Важливо: переконайся, що у FXML цей ID правильний
+
+    @FXML
+    private MFXButton btnCancel;
+
+    @FXML
+    private AnchorPane anchorPaneCoord;
+
 
     private Coordinator coordinator;
     private List<Event> eventList = new ArrayList<>(); // Список подій без BLL/DAL
@@ -54,17 +63,22 @@ public class CoordinatorDashboardController implements Initializable {
 
     }
 
-    public void openCreateEvent(ActionEvent actionEvent) {
+    @FXML
+    private void openCreateEvent(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/CreateEvent.fxml"));
-            Parent root = fxmlLoader.load();
+            // Завантажуємо CreateEvent.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/CreateEvent.fxml"));
+            Node createEventView = loader.load();
 
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL); // Відкриває вікно як модальне
-            stage.setTitle("Create Event");
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.show();
+            // Очищаємо anchorPaneCoord і додаємо CreateEvent.fxml
+            anchorPaneCoord.getChildren().clear();
+            anchorPaneCoord.getChildren().add(createEventView);
+
+            // Прив’язуємо CreateEvent.fxml до розмірів anchorPaneCoord
+            AnchorPane.setTopAnchor(createEventView, 0.0);
+            AnchorPane.setBottomAnchor(createEventView, 0.0);
+            AnchorPane.setLeftAnchor(createEventView, 0.0);
+            AnchorPane.setRightAnchor(createEventView, 0.0);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,7 +86,25 @@ public class CoordinatorDashboardController implements Initializable {
         }
     }
 
-    public void createCoordinator(ActionEvent actionEvent) {
+
+    @FXML
+    public void cancelAction() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/CoordinatorDashboard.fxml"));
+            Node dashboardContent = loader.load();
+
+            // Отримуємо контролер CoordinatorDashboardController
+            CoordinatorDashboardController controller = loader.getController();
+            controller.populateGridPane(); // Оновлення списку подій
+
+            // Отримуємо батьківський контейнер (gridPaneCoord)
+            AnchorPane root = (AnchorPane) btnCancel.getParent().getParent(); // btnCancel всередині VBox → HBox → AnchorPane
+            root.getChildren().clear();
+            root.getChildren().add(dashboardContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("❌ Error loading CoordinatorDashboard.fxml");
+        }
     }
 }
 
