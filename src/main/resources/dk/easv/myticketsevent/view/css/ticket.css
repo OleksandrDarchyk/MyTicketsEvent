@@ -1,0 +1,96 @@
+/* ticket-styles.css */
+
+/* Root container */
+.anchor-pane {
+    -fx-background-color: #f0f4f8;
+}
+
+/* Header section */
+.header-box {
+    -fx-spacing: 10;
+    -fx-alignment: center;
+}
+
+.logo {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 0, 0);
+}
+
+.header-label {
+    -fx-text-fill: #2d3748;
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
+}
+
+/* Ticket content */
+.ticket-content {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 25;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0.5, 0, 0);
+    -fx-spacing: 30;
+}
+
+.event-name {
+    -fx-text-fill: #2d3748;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.detail-label {
+    -fx-text-fill: #718096;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.value-label {
+    -fx-text-fill: #4a5568;
+    -fx-font-size: 14px;
+}
+
+.separator-line {
+    -fx-stroke: #cbd5e0;
+    -fx-stroke-width: 1;
+}
+
+/* Participant info */
+.participant-label {
+    -fx-text-fill: #2d3748;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+
+/* QR and Barcode */
+.qr-code {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.5, 0, 0);
+}
+
+.barcode {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 3, 0.5, 0, 0);
+}
+
+/* Footer section */
+.print-button {
+    -fx-background-color: #4299e1;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 25;
+    -fx-font-size: 14px;
+}
+
+.print-button:hover {
+    -fx-background-color: #3182ce;
+    -fx-cursor: hand;
+}
+
+.footer-text {
+    -fx-text-fill: #718096;
+    -fx-font-size: 12px;
+}
+
+/* Decorative elements */
+.valid-label {
+    -fx-text-fill: #48bb78;
+    -fx-font-weight: bold;
+    -fx-rotate: 15;
+}
