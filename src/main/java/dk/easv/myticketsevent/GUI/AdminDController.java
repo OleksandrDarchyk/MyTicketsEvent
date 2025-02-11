@@ -1,21 +1,15 @@
 package dk.easv.myticketsevent.GUI;
 
-
-
 import dk.easv.myticketsevent.BE.Event;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,22 +21,26 @@ public class AdminDController implements Initializable {
 
     @FXML
     private GridPane gridPaneAdmin;
-
     @FXML
-    private AnchorPane anchorPaneAdmin;
-
-    private List<Event> eventList = new ArrayList<>(); // Список подій для тестування
-
+    private AnchorPane contentContainer; // Головний контейнер для вмісту
     @FXML
     private Button createUserButton;
 
+    private List<Event> eventList = new ArrayList<>();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        generateTestEvents(); // Створюємо тимчасові події
-        populateGridPane(); // Завантажуємо події у GridPane
+        generateTestEvents();
+        showHome(); // Ініціалізація головного екрана
     }
 
-    // Додаємо тестові події без бази даних
+    // Показати головний екран з картками подій
+    private void showHome() {
+        contentContainer.getChildren().clear();
+        contentContainer.getChildren().add(gridPaneAdmin);
+        populateGridPane();
+    }
+
     private void generateTestEvents() {
         eventList.add(new Event("EASV Party", "EASV Bar", "2024-04-10 19:00"));
         eventList.add(new Event("Wine Tasting", "Main Hall", "2024-04-15 18:30"));
@@ -59,12 +57,10 @@ public class AdminDController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/EventCard.fxml"));
                 Pane eventCard = fxmlLoader.load();
 
-                // Отримуємо контролер картки
                 EventCardController controller = fxmlLoader.getController();
                 controller.setEvent(event);
-                controller.setParentContainer(anchorPaneAdmin); // ✅ Передаємо правильний контейнер
+                controller.setParentContainer(contentContainer);
 
-                // Додаємо картку у GridPane
                 gridPaneAdmin.add(eventCard, col, row);
                 col++;
                 if (col == numColumns) {
@@ -73,24 +69,26 @@ public class AdminDController implements Initializable {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                System.out.println("❌ Error loading EventCard.fxml");
+                System.out.println("❌ Помилка завантаження EventCard.fxml");
             }
         }
     }
-
 
     public void createCoordinator(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/CreateCoordinator.fxml"));
             Node newContent = loader.load();
-
-            // Очищаємо gridPaneAdmin і додаємо новий вміст
-            gridPaneAdmin.getChildren().clear();
-            gridPaneAdmin.add(newContent, 0, 0, 2, 1); // Займає 2 колонки
+            contentContainer.getChildren().clear();
+            contentContainer.getChildren().add(newContent);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("❌ Error loading CreateCoordinator.fxml");
+            System.out.println("❌ Помилка завантаження CreateCoordinator.fxml");
         }
     }
-    }
 
+    @FXML
+    private void goToHome(ActionEvent event) {
+        showHome(); // Просте оновлення без зайвих завантажень
+        System.out.println("✅ Головний екран оновлено");
+    }
+}
