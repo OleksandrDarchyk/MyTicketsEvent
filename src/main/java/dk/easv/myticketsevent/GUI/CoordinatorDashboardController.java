@@ -60,8 +60,35 @@ public class CoordinatorDashboardController implements Initializable {
     }
 
     public void populateGridPane() {
+        gridPaneCoord.getChildren().clear();
+        int col = 0, row = 0;
+        int numColumns = 2;
 
+        for (Event event : eventList) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/EventCard.fxml"));
+                Pane eventCard = fxmlLoader.load();
+
+                // Отримуємо контролер картки
+                EventCardController controller = fxmlLoader.getController();
+                controller.setEvent(event);
+                controller.setParentContainer(anchorPaneCoord); // Передаємо контейнер для заміни вмісту
+
+                // Додаємо картку у GridPane
+                gridPaneCoord.add(eventCard, col, row);
+                col++;
+                if (col == numColumns) {
+                    col = 0;
+                    row++;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("❌ Error loading EventCard.fxml");
+            }
+        }
     }
+
+
 
     @FXML
     private void openCreateEvent(ActionEvent event) {

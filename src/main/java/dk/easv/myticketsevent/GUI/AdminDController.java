@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -26,6 +27,9 @@ public class AdminDController implements Initializable {
 
     @FXML
     private GridPane gridPaneAdmin;
+
+    @FXML
+    private AnchorPane anchorPaneAdmin;
 
     private List<Event> eventList = new ArrayList<>(); // Список подій для тестування
 
@@ -46,21 +50,21 @@ public class AdminDController implements Initializable {
     }
 
     public void populateGridPane() {
-        gridPaneAdmin.getChildren().clear(); // Очищаємо GridPane перед оновленням
-        int numRows = 4;
-        int numColumns = 2;
+        gridPaneAdmin.getChildren().clear();
         int col = 0, row = 0;
+        int numColumns = 2;
 
         for (Event event : eventList) {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/EventCard.fxml"));
                 Pane eventCard = fxmlLoader.load();
 
-                // Передаємо дані у EventCardController
+                // Отримуємо контролер картки
                 EventCardController controller = fxmlLoader.getController();
                 controller.setEvent(event);
+                controller.setParentContainer(anchorPaneAdmin); // ✅ Передаємо правильний контейнер
 
-                // Додаємо в GridPane
+                // Додаємо картку у GridPane
                 gridPaneAdmin.add(eventCard, col, row);
                 col++;
                 if (col == numColumns) {
@@ -69,9 +73,11 @@ public class AdminDController implements Initializable {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+                System.out.println("❌ Error loading EventCard.fxml");
             }
         }
     }
+
 
     public void createCoordinator(ActionEvent actionEvent) {
         try {
