@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="553.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.CreateCostumerController">
+
+    <children>
+        <VBox alignment="CENTER" layoutX="184.0" layoutY="193.0" prefHeight="167.0" prefWidth="433.0">
+            <children>
+                <MFXTextField fx:id="costumerNameField" prefHeight="0.0" prefWidth="204.0" promptText="Name" />
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <MFXTextField fx:id="costumerEmailField" prefHeight="0.0" prefWidth="204.0" promptText="Email" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <MFXButton layoutX="459.0" layoutY="381.0" onAction="#createCostumer" text="Create" />
+        <MFXButton layoutX="251.0" layoutY="381.0" onAction="#cancelCostumer" text="Cancel" />
+    </children>
+</AnchorPane>

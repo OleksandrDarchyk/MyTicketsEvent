@@ -67,13 +67,30 @@ public class ManageEventController {
 
     @FXML
     private void addParticipant(ActionEvent event) {
-        String participantName = searchField.getText().trim();
-        if (!participantName.isEmpty()) {
-            participants.add(participantName);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/CreateCustomer.fxml"));
+            Parent root = loader.load();
+
+            // Отримуємо контролер CreateCostumerController
+            CreateCostumerController controller = loader.getController();
+
+            // Передаємо callback-функцію для оновлення списку
+            controller.setOnCustomerAdded(this::updateParticipantsList);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Add Customer");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Cannot open CreateCustomer window.");
+        }
+    }
+
+    private void updateParticipantsList(String customerName) {
+        if (customerName != null && !customerName.isEmpty()) {
+            participants.add(customerName);
             participantsList.setItems(participants);
-            searchField.clear();
-        } else {
-            showAlert("Error", "Please enter a participant's name.");
         }
     }
 
