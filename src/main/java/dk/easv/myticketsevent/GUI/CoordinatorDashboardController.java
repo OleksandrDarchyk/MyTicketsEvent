@@ -8,12 +8,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -67,6 +72,7 @@ public class CoordinatorDashboardController implements Initializable {
                 EventCardController controller = fxmlLoader.getController();
                 controller.setEvent(event);
                 controller.setParentContainer(contentContainer);
+                controller.setUserRole("Coordinator"); // Передаємо роль
 
                 gridPaneCoord.add(eventCard, col, row);
                 col++;
@@ -80,6 +86,7 @@ public class CoordinatorDashboardController implements Initializable {
             }
         }
     }
+
 
     @FXML
     private void openCreateEvent(ActionEvent event) {
@@ -104,4 +111,22 @@ public class CoordinatorDashboardController implements Initializable {
         showHome();
         System.out.println("✅ Головний екран координатора оновлено");
     }
+    @FXML
+    private void openTicket() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/TicketView.fxml"));
+            Parent root = loader.load();
+
+            TicketController controller = loader.getController();
+            controller.setDetails("EASV Party", "EASV Bar", LocalDate.of(2024, 4, 10), LocalTime.of(19, 0), "John Doe");
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Ticket");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

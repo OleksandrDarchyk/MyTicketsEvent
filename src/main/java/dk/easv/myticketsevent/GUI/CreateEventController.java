@@ -1,9 +1,16 @@
 package dk.easv.myticketsevent.GUI;
 
+import dk.easv.myticketsevent.BE.Event;
+import dk.easv.myticketsevent.BE.Ticket;
 import io.github.palexdev.materialfx.controls.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 public class CreateEventController {
 
@@ -36,31 +43,28 @@ public class CreateEventController {
     public void saveAction() {
         String eventName = txtEventName.getText().trim();
         String location = txtLocation.getText().trim();
-        String startDate = (dateStartDate.getValue() != null) ? dateStartDate.getValue().toString() : "";
-        String endDate = (dateEndDate.getValue() != null) ? dateEndDate.getValue().toString() : "";
-        String startTime = comboStartTime.getValue();
-        String endTime = comboEndTime.getValue();
-        String tickets = numOfTickets.getText().trim();
+        LocalDate startDate = dateStartDate.getValue();
+        String startTimeStr = comboStartTime.getValue();
         String coordinator = comboAssignCoordinator.getValue();
-        String notes = txtNotes.getText().trim();
-        String locationGuidance = txtLocationGuidance.getText().trim();
 
-        if (eventName.isEmpty() || location.isEmpty() || startDate.isEmpty() || endDate.isEmpty()
-                || startTime == null || endTime == null || tickets.isEmpty() || coordinator == null) {
+        if (eventName.isEmpty() || location.isEmpty() || startDate == null || startTimeStr == null || coordinator == null) {
             showAlert("Error", "Please fill in all required fields.");
             return;
         }
 
-        System.out.println("✅ Event Created:");
-        System.out.println("Name: " + eventName);
-        System.out.println("Location: " + location);
-        System.out.println("Start: " + startDate + " " + startTime);
-        System.out.println("End: " + endDate + " " + endTime);
-        System.out.println("Tickets: " + tickets);
-        System.out.println("Coordinator: " + coordinator);
-        System.out.println("Notes: " + notes);
-        System.out.println("Location Guidance: " + locationGuidance);
+        // Конвертуємо строку в LocalTime
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime startTime = LocalTime.parse(startTimeStr, timeFormatter);
 
+        // Створюємо подію
+        Event newEvent = new Event(eventName, location, startDate.toString() + " " + startTime);
+        System.out.println("🎉 Event Created: " + newEvent);
+
+        // Створюємо квиток автоматично
+        Ticket newTicket = new Ticket(UUID.randomUUID(), eventName, location, startDate, startTime, "John Doe");
+        System.out.println("🎟 Ticket Created: " + newTicket);
+
+        showAlert("Success", "Event and ticket created successfully!");
         closeWindow();
     }
 

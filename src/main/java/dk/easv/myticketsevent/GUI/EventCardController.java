@@ -21,6 +21,10 @@ public class EventCardController {
     private MFXButton deleteBtn;
 
     @FXML
+    private MFXButton btnManageEvents;
+
+
+    @FXML
     private Label eventLocationlbl, eventNamelbl, eventTimelbl;
 
     @FXML
@@ -29,12 +33,22 @@ public class EventCardController {
     private Event event;
     private AnchorPane parentContainer; // Контейнер для заміни вмісту
 
+    private String userRole;
+
     public void setEvent(Event event) {
         this.event = event;
         eventNamelbl.setText(event.getName());
         eventLocationlbl.setText(event.getLocation());
         eventTimelbl.setText(event.getDateTime());
     }
+
+    public void setUserRole(String role) {
+        this.userRole = role;
+        if ("Admin".equalsIgnoreCase(role)) {
+            btnManageEvents.setVisible(false); // Приховуємо кнопку для Admin
+        }
+    }
+
 
     // Передаємо головний контейнер (AnchorPane) з CoordinatorDashboard або AdminDashboard
     public void setParentContainer(AnchorPane parentContainer) {

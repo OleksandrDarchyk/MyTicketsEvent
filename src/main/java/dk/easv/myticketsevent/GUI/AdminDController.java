@@ -60,6 +60,7 @@ public class AdminDController implements Initializable {
                 EventCardController controller = fxmlLoader.getController();
                 controller.setEvent(event);
                 controller.setParentContainer(contentContainer);
+                controller.setUserRole("Admin"); // Передаємо роль
 
                 gridPaneAdmin.add(eventCard, col, row);
                 col++;
@@ -73,6 +74,7 @@ public class AdminDController implements Initializable {
             }
         }
     }
+
 
     public void createCoordinator(ActionEvent actionEvent) {
         try {
