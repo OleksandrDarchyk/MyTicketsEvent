@@ -45,27 +45,18 @@ public class TicketController implements Initializable {
     private UUID ticketId;
 
     public void setDetails(String eventName, String location, LocalDate date, LocalTime time, String participantName) {
+        if (ticketEvent == null || ticketLocation == null || ticketDate == null || ticketTime == null || ticketParticipantName == null) {
+            System.err.println("❌ FXML elements are not initialized!");
+            return;
+        }
+
         ticketEvent.setText(eventName);
         ticketLocation.setText(location);
         ticketDate.setText(date.toString());
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        ticketTime.setText(time.format(formatter));
-
+        ticketTime.setText(time.toString());
         ticketParticipantName.setText(participantName);
-
-        ticketId = UUID.randomUUID();  // Генеруємо унікальний ID для квитка
-
-        try {
-            Image qrCode = generateQRCode(ticketId.toString());
-            imgQRCode.setImage(qrCode);
-
-            Image barCode = generateBarcode(ticketId.toString());
-            imgBarcode.setImage(barCode);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
+
 
     public void handlePrint(ActionEvent actionEvent) throws IOException {
         printButton.setVisible(false);
@@ -146,5 +137,8 @@ public class TicketController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("✅ TicketController Initialized");
+    }
+
+    public void printTicket(ActionEvent actionEvent) {
     }
 }

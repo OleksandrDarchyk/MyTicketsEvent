@@ -28,22 +28,22 @@
 
             <!-- Event Details -->
             <VBox prefWidth="300" spacing="15">
-                <Label fx:id="eventName" styleClass="event-name" />
+                <Label fx:id="ticketEvent" styleClass="event-name" />
 
                 <VBox spacing="5">
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label styleClass="detail-label" text="Date:" />
-                        <Label fx:id="eventDate" styleClass="value-label" />
+                        <Label fx:id="ticketDate" styleClass="value-label" />
                     </HBox>
 
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label styleClass="detail-label" text="Time:" />
-                        <Label fx:id="eventTime" styleClass="value-label" />
+                        <Label fx:id="ticketTime" styleClass="value-label" />
                     </HBox>
 
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label styleClass="detail-label" text="Location:" />
-                        <Label fx:id="eventLocation" styleClass="value-label" />
+                        <Label fx:id="ticketLocation" styleClass="value-label" />
                     </HBox>
                 </VBox>
 
@@ -51,24 +51,21 @@
 
                 <VBox spacing="5">
                     <Label styleClass="detail-label" text="User" />
-                    <Label fx:id="participantName" styleClass="participant-label" />
+                    <Label fx:id="ticketParticipantName" styleClass="participant-label" />
                 </VBox>
             </VBox>
 
             <!-- Codes Section -->
             <VBox alignment="CENTER" spacing="20">
-                <ImageView fx:id="qrCodeImage" fitHeight="120" fitWidth="120" styleClass="qr-code" />
-
-                <ImageView fx:id="barcodeImage" fitHeight="50" fitWidth="200" styleClass="barcode" />
+                <ImageView fx:id="imgQRCode" fitHeight="120" fitWidth="120" styleClass="qr-code" />
+                <ImageView fx:id="imgBarcode" fitHeight="50" fitWidth="200" styleClass="barcode" />
             </VBox>
         </HBox>
 
         <!-- Footer -->
         <VBox alignment="CENTER" spacing="10">
-            <Button fx:id="printButton" onAction="#handlePrint" styleClass="print-button" text="Print Ticket" />
-
+            <Button fx:id="printButton" onAction="#printTicket" styleClass="print-button" text="Print Ticket" />
             <Label styleClass="footer-text" text="Present this ticket at the entrance" />
-
             <Line styleClass="separator-line" />
         </VBox>
     </VBox>

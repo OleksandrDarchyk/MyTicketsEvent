@@ -113,9 +113,10 @@ public class ManageEventController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/Ticket.fxml"));
             Parent root = loader.load();
 
+            // Отримуємо контролер після завантаження
             TicketController controller = loader.getController();
 
-            // Виправлений парсинг дати та часу
+            // Парсимо дату та час
             String dateTimeString = txtDate.getText();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             LocalDateTime dateTime;
@@ -127,6 +128,7 @@ public class ManageEventController {
                 return;
             }
 
+            // Викликаємо setDetails() тільки після ініціалізації
             controller.setDetails(eventTitleLabel.getText(), txtLocation.getText(),
                     dateTime.toLocalDate(), dateTime.toLocalTime(), "John Doe");
 
@@ -139,6 +141,7 @@ public class ManageEventController {
             showAlert("Error", "Cannot open ticket window.");
         }
     }
+
 
     @FXML
     private void getCoupon(ActionEvent event) {
