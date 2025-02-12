@@ -17,7 +17,7 @@
         <VBox alignment="CENTER" spacing="10" styleClass="header-box">
             <ImageView fitHeight="40" fitWidth="150" preserveRatio="true" styleClass="logo">
                 <image>
-                    <Image url="@/dk/easy/myticketsevent/picture/Login.png" />
+                    <Image url="@../picture/Login.png" />
                 </image>
             </ImageView>
             <Label styleClass="header-label" text="E-TICKET" />

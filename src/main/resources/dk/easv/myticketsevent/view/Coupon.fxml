@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="dk.easv.myticketsevent.GUI.CouponController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane fx:id="couponPane" prefHeight="400" prefWidth="600" stylesheets="@css/ticket.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.CouponController">
+
+    <VBox alignment="TOP_CENTER" spacing="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
+
+        <!-- Header Section -->
+        <VBox alignment="CENTER" spacing="10" styleClass="header-box">
+            <ImageView fitHeight="40" fitWidth="150" preserveRatio="true" styleClass="logo">
+                <image>
+                    <Image url="@../picture/Login.png" />
+                </image>
+            </ImageView>
+            <Label styleClass="header-label" text="DISCOUNT COUPON" />
+        </VBox>
+
+        <!-- Coupon Content -->
+        <HBox alignment="CENTER_LEFT" spacing="30" styleClass="ticket-content">
+
+            <!-- Coupon Details -->
+            <VBox prefWidth="300" spacing="15">
+                <Label fx:id="discountAmount" styleClass="event-name" text="20% OFF"
+                       style="-fx-text-fill: #48bb78;"/>
+
+                <VBox spacing="5">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label styleClass="detail-label" text="Valid Until:" />
+                        <Label fx:id="validDate" styleClass="value-label" text="2024-12-31" />
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label styleClass="detail-label" text="Coupon Code:" />
+                        <Label fx:id="couponCode" styleClass="value-label" text="CPN-2024-ABCD" />
+                    </HBox>
+                </VBox>
+
+                <Line styleClass="separator-line" />
+
+                <VBox spacing="5">
+                    <Label styleClass="detail-label" text="Terms &amp; Conditions" />
+                    <Label fx:id="termsLabel" styleClass="value-label"
+                           text="1. Valid for selected events only&#10;2. Non-transferable&#10;3. One-time use" />
+                </VBox>
+            </VBox>
+
+            <!-- Codes Section -->
+            <VBox alignment="CENTER" spacing="20">
+                <ImageView fx:id="couponQrCode" fitHeight="120" fitWidth="120" styleClass="qr-code" />
+                <Label styleClass="footer-text" text="Scan QR code to redeem" />
+            </VBox>
+        </HBox>
+
+        <!-- Footer -->
+        <VBox alignment="CENTER" spacing="10">
+            <Button fx:id="printCouponButton" onAction="#handlePrint" styleClass="print-button" text="Print Coupon" />
+            <Label styleClass="footer-text" text="Present this coupon at checkout" />
+            <Line styleClass="separator-line" />
+        </VBox>
+    </VBox>
+
+    <!-- Decorative Elements -->
+    <HBox alignment="CENTER_RIGHT" spacing="10" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">
+        <Label styleClass="valid-label" text="Valid Coupon" />
+    </HBox>
 
 </AnchorPane>
