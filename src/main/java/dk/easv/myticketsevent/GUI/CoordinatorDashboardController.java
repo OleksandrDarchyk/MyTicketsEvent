@@ -129,4 +129,6 @@ public class CoordinatorDashboardController implements Initializable {
         }
     }
 
+    public void logOut(ActionEvent actionEvent) {
+    }
 }

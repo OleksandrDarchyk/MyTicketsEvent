@@ -93,4 +93,7 @@ public class AdminDController implements Initializable {
         showHome(); // Просте оновлення без зайвих завантажень
         System.out.println("✅ Головний екран оновлено");
     }
+
+    public void logOutAdm(ActionEvent actionEvent) {
+    }
 }
