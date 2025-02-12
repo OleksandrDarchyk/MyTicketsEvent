@@ -145,8 +145,26 @@ public class ManageEventController {
 
     @FXML
     private void getCoupon(ActionEvent event) {
-        showAlert("🎫 Coupon Generated", "Your discount coupon for " + eventTitleLabel.getText() + " is ready!");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/Coupon.fxml"));
+            Parent root = loader.load();
+
+            // Отримуємо контролер купона
+            CouponController controller = loader.getController();
+            controller.setDetails(eventTitleLabel.getText(), txtLocation.getText(), "John Doe");
+
+            // Відкриваємо вікно купона
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Discount Coupon");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Cannot open coupon window.");
+        }
     }
+
+
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

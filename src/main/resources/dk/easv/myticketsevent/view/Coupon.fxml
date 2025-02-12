@@ -28,14 +28,22 @@
 
             <!-- Coupon Details -->
             <VBox prefWidth="300" spacing="15">
-                <Label fx:id="discountAmount" styleClass="event-name" text="20% OFF"
-                       style="-fx-text-fill: #48bb78;"/>
-
+                <Label fx:id="couponEvent" styleClass="event-name" text="Event Name"/>
                 <VBox spacing="5">
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label styleClass="detail-label" text="Valid Until:" />
                         <Label fx:id="validDate" styleClass="value-label" text="2024-12-31" />
                     </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label styleClass="detail-label" text="Location:" />
+                        <Label fx:id="couponLocation" styleClass="value-label" text="EASV Bar" />
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label styleClass="detail-label" text="Holder:" />
+                        <Label fx:id="couponHolder" styleClass="value-label" text="John Doe" />
+                    </HBox>
+
 
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label styleClass="detail-label" text="Coupon Code:" />
@@ -61,7 +69,7 @@
 
         <!-- Footer -->
         <VBox alignment="CENTER" spacing="10">
-            <Button fx:id="printCouponButton" onAction="#handlePrint" styleClass="print-button" text="Print Coupon" />
+            <Button fx:id="printCouponButton" onAction="#printCoupon" styleClass="print-button" text="Print Coupon" />
             <Label styleClass="footer-text" text="Present this coupon at checkout" />
             <Line styleClass="separator-line" />
         </VBox>
