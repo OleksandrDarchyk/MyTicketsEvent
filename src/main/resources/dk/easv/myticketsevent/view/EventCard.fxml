@@ -5,37 +5,51 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="161.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.EventCardController">
+<Pane fx:id="gridPane" styleClass="event-card" prefWidth="400" prefHeight="180"
+      xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="dk.easv.myticketsevent.GUI.EventCardController">
+
    <children>
-      <ImageView fx:id="eventImage" fitHeight="135.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="eventImage" styleClass="event-image" fitWidth="180" fitHeight="160"
+                 pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/1.png" />
          </image>
       </ImageView>
-      <VBox layoutX="211.0" prefHeight="141.0" prefWidth="218.0">
-         <children>
-            <Label fx:id="eventNamelbl" prefHeight="25.0" prefWidth="211.0" text="Name" />
-            <Label fx:id="eventLocationlbl" prefHeight="25.0" prefWidth="211.0" text="Place" />
-            <HBox prefHeight="26.0" prefWidth="218.0">
-               <children>
-                  <ImageView fitHeight="19.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../picture/time.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="eventTimelbl" prefHeight="27.0" prefWidth="116.0" text="Label" />
-               </children>
-            </HBox>
-            <MFXButton fx:id="btnManageEvents" onAction="#openManageEvents" prefHeight="27.0" prefWidth="215.0" text="Manage Events" />
-         </children>
+
+      <VBox styleClass="event-content" layoutX="190" spacing="8">
+         <Label fx:id="eventNamelbl" styleClass="event-title" text="Name" />
+         <HBox styleClass="detail-row" spacing="8">
+            <ImageView styleClass="detail-icon" fitWidth="16" fitHeight="16"
+                       pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/1.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="eventLocationlbl" styleClass="detail-text" text="Place" />
+         </HBox>
+
+         <HBox styleClass="detail-row" spacing="8">
+            <ImageView styleClass="detail-icon" fitWidth="16" fitHeight="16"
+                       pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../picture/time.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="eventTimelbl" styleClass="detail-text" text="Label" />
+         </HBox>
+
+         <MFXButton styleClass="action-btn" fx:id="btnManageEvents" onAction="#openManageEvents"
+                    text="Manage Events" />
       </VBox>
-      <MFXButton layoutY="131.0" prefHeight="27.0" prefWidth="202.0" text="extra information" />
-      <MFXButton fx:id="deleteBtn" layoutX="382.0" layoutY="123.0" onAction="#deleteEvent" prefHeight="12.0" prefWidth="19.0" text="">
+
+      <MFXButton styleClass="delete-btn" fx:id="deleteBtn" layoutX="350" layoutY="10"
+                 onAction="#deleteEvent" text="">
          <graphic>
-            <ImageView fitHeight="28.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitWidth="20" fitHeight="20" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../picture/delete.png" />
                </image>

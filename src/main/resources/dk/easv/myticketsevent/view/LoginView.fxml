@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="loginVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.LoginViewController">
+<VBox fx:id="loginVBox"  styleClass="login-background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.LoginViewController" >
    <children>
       <AnchorPane prefHeight="320.0" prefWidth="600.0">
          <children>
@@ -25,9 +25,9 @@
                   <Image url="@../picture/password.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="125.0" fitWidth="214.0" layoutX="193.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="131.0" fitWidth="151.0" layoutX="225.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../picture/MyEventTicket.png" />
+                  <Image url="@../picture/Logo.png" />
                </image>
             </ImageView>
          </children>

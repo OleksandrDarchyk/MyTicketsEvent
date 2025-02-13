@@ -12,6 +12,7 @@
         public void start(Stage primaryStage) throws IOException {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/LoginView.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
+            scene.getStylesheets().add(getClass().getResource("/dk/easv/myticketsevent/view/css/styles.css").toExternalForm());
             primaryStage.setTitle("My Tickets Event");
             primaryStage.setScene(scene);
             primaryStage.show();

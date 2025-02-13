@@ -1,0 +1,25 @@
+.login-background {
+    -fx-background-color: #3B1D82; /* Просто синій */
+}
+
+.button {
+    -fx-background-color: #FFD700; /* Яскравий жовтий */
+    -fx-text-fill: black; /* Чорний текст для контрасту */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #C5A200; /* Темніша жовта рамка */
+    -fx-border-width: 2px;
+}
+
+.button:hover {
+    -fx-background-color: #FFC107; /* Трохи темніший жовтий */
+}
+
+.button:pressed {
+    -fx-background-color: #FFB300;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}

@@ -15,12 +15,12 @@
     <children>
         <HBox prefHeight="50.0" prefWidth="800.0" spacing="10">
             <children>
-                <ImageView fitHeight="45.0" fitWidth="189.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="49.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../picture/WelcomeAdmin.png" />
+                        <Image url="@../picture/Logo.png" />
                     </image>
                 </ImageView>
-                <MFXButton fx:id="homeBtn" onAction="#goToHome" prefHeight="45.0" prefWidth="234.0" text="Home">
+                <MFXButton fx:id="homeBtn" onAction="#goToHome" prefHeight="49.0" prefWidth="200.0" text="Home">
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -29,12 +29,12 @@
                         </ImageView>
                     </graphic>
                 </MFXButton>
-                <MFXButton fx:id="btnCreateEvent" onAction="#openCreateEvent" prefHeight="45.0" prefWidth="234.0" text="Create Event" />
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                <MFXButton fx:id="btnCreateEvent" onAction="#openCreateEvent" prefHeight="49.0" prefWidth="200.0" text="Create Event" />
+            <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="313.0">
                <children>
-                  <MFXButton fx:id="logOut" onAction="#logOut" text="">
+                  <MFXButton fx:id="logOut" onAction="#logOut" prefHeight="49.0" prefWidth="130.0" text="LogOut">
                      <graphic>
-                        <ImageView fitHeight="27.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../picture/logout.png" />
                            </image>

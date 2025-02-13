@@ -48,10 +48,18 @@ public class LoginViewController {
                 throw new IOException("❌ FXML-файл не знайдено: " + fxmlPath);
             }
 
-            Parent root = loader.load();
+            Parent root = loader.load();  // Завантажуємо FXML
+
+            // ✅ Створюємо нову сцену
+            Scene scene = new Scene(root);
+
+            // ✅ Додаємо CSS до нової сцени
+            scene.getStylesheets().add(getClass().getResource("/dk/easv/myticketsevent/view/css/styles.css").toExternalForm());
+
+            // ✅ Створюємо та відкриваємо нове вікно
             Stage stage = new Stage();
             stage.setTitle(title);
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.show();
 
             // Закриваємо вікно логіну
