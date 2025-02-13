@@ -10,48 +10,52 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import dk.easv.myticketsevent.GUI.ManageEventController;
 
 import java.io.IOException;
 
 public class EventCardController {
-
+    @FXML
+    private Label eventLocationlbl, eventNamelbl, eventTimelbl;
+    @FXML
+    private ImageView eventImage;
     @FXML
     private Button deleteBtn;
-
     @FXML
     private Button btnManageEvents;
 
-
-    @FXML
-    private Label eventLocationlbl, eventNamelbl, eventTimelbl;
-
-    @FXML
-    private Pane gridPane;
-
     private Event event;
-    private AnchorPane parentContainer; // Контейнер для заміни вмісту
-
+    private AnchorPane parentContainer;
     private String userRole;
+
+    public void setUserRole(String role) {
+        this.userRole = role;
+        if ("Admin".equalsIgnoreCase(role)) {
+            btnManageEvents.setDisable(true); // Блокуємо кнопку, замість приховування
+        }
+    }
 
     public void setEvent(Event event) {
         this.event = event;
         eventNamelbl.setText(event.getName());
         eventLocationlbl.setText(event.getLocation());
         eventTimelbl.setText(event.getDateTime());
-    }
 
-    public void setUserRole(String role) {
-        this.userRole = role;
-        if ("Admin".equalsIgnoreCase(role)) {
-            btnManageEvents.setVisible(false); // Приховуємо кнопку для Admin
+        // Отримуємо індекс події (імітуємо унікальні зображення)
+        int imageIndex = (event.hashCode() % 8 + 8) % 8 + 1;
+        String imagePath = "/dk/easv/myticketsevent/image/" + imageIndex + ".png";
+
+        if (eventImage != null) {
+            eventImage.setImage(new Image(getClass().getResourceAsStream(imagePath)));
+        } else {
+            System.out.println("❌ eventImage не ініціалізовано!");
         }
     }
 
-
-    // Передаємо головний контейнер (AnchorPane) з CoordinatorDashboard або AdminDashboard
     public void setParentContainer(AnchorPane parentContainer) {
         this.parentContainer = parentContainer;
     }
@@ -67,12 +71,10 @@ public class EventCardController {
                 controller.setEvent(this.event);
             }
 
-            // Замінюємо вміст `parentContainer` (CoordinatorDashboard або AdminDashboard)
+            // Замінюємо вміст `parentContainer`
             if (parentContainer != null) {
                 parentContainer.getChildren().clear();
                 parentContainer.getChildren().add(manageEventsView);
-
-                // Прив’язуємо до розмірів AnchorPane
                 AnchorPane.setTopAnchor(manageEventsView, 0.0);
                 AnchorPane.setBottomAnchor(manageEventsView, 0.0);
                 AnchorPane.setLeftAnchor(manageEventsView, 0.0);
@@ -88,5 +90,6 @@ public class EventCardController {
     }
 
     public void deleteEvent(ActionEvent actionEvent) {
+        System.out.println("🗑 Видалення події: " + event.getName());
     }
 }
