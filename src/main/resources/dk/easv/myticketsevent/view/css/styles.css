@@ -1,16 +1,26 @@
 .login-background {
     -fx-background-color: #3B1D82; /* Просто синій */
 }
+.root {
+    -fx-background-color: #3B1D82; /* Темно-синій фон для всіх вікон */
+}
+
+.anchor-pane, .vbox, .grid-pane {
+    -fx-background-color: #3B1D82;
+}
+
+.scroll-pane {
+    -fx-background: #3B1D82;
+}
 
 .button {
-    -fx-background-color: #FFD700; /* Яскравий жовтий */
+    -fx-background-color: #FFC107; /* Яскравий жовтий */
     -fx-text-fill: black; /* Чорний текст для контрасту */
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-padding: 10px 20px;
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
-    -fx-border-color: #C5A200; /* Темніша жовта рамка */
+    -fx-border-color: #FFB300; /* Темніша жовта рамка */
     -fx-border-width: 2px;
 }
 

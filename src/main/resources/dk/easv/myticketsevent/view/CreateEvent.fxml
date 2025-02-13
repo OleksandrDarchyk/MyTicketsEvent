@@ -34,7 +34,7 @@
       <HBox alignment="BOTTOM_CENTER" spacing="10.0">
          <children>
             <MFXButton onAction="#deleteEventAction" prefHeight="27.0" prefWidth="78.0" text="Delete" />
-            <Region prefHeight="146.0" prefWidth="581.0" HBox.hgrow="ALWAYS" />
+            <Region prefHeight="86.0" prefWidth="468.0" HBox.hgrow="ALWAYS" />
             <MFXButton fx:id="btnCancel" onAction="#cancelAction" prefHeight="27.0" prefWidth="86.0" text="Cancel" />
             <MFXButton onAction="#saveAction" prefHeight="27.0" prefWidth="66.0" text="Save" />
          </children>
