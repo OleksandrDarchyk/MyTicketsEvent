@@ -9,11 +9,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.CoordinatorDashboardController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dk.easv.myticketsevent.GUI.CoordinatorDashboardController">
 
-    <!-- Верхня панель -->
+    <!-- Верхня панель навігації -->
     <children>
-        <HBox prefHeight="50.0" prefWidth="800.0" spacing="10">
+        <HBox prefHeight="50.0" prefWidth="800.0" spacing="10" alignment="CENTER_LEFT">
             <children>
                 <ImageView fitHeight="49.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -30,28 +32,34 @@
                     </graphic>
                 </MFXButton>
                 <MFXButton fx:id="btnCreateEvent" onAction="#openCreateEvent" prefHeight="49.0" prefWidth="200.0" text="Create Event" />
-            <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="313.0">
-               <children>
-                  <MFXButton fx:id="logOut" onAction="#logOut" prefHeight="49.0" prefWidth="130.0" text="LogOut">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../picture/logout.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MFXButton>
-               </children>
-            </HBox>
+
+                <HBox alignment="CENTER_RIGHT" prefWidth="300.0">
+                    <children>
+                        <MFXButton fx:id="logOut" onAction="#logOut" prefHeight="49.0" prefWidth="130.0" text="LogOut">
+                            <graphic>
+                                <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../picture/logout.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MFXButton>
+                    </children>
+                </HBox>
             </children>
         </HBox>
 
-        <!-- Основний контент -->
-        <ScrollPane layoutY="50.0" prefHeight="550.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+        <!-- Основний контент із прокруткою -->
+        <ScrollPane layoutY="50.0" fitToWidth="true" fitToHeight="true"
+                    hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
             <content>
                 <AnchorPane fx:id="contentContainer" prefHeight="550.0" prefWidth="800.0">
                     <children>
-                        <GridPane fx:id="gridPaneCoord" hgap="15" vgap="15" gridLinesVisible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <GridPane fx:id="gridPaneCoord" hgap="15" vgap="15" gridLinesVisible="false"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" prefWidth="400.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" prefWidth="400.0" />
