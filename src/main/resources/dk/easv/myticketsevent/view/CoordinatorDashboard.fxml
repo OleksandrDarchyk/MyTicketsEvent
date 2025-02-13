@@ -51,7 +51,7 @@
             <content>
                 <AnchorPane fx:id="contentContainer" prefHeight="550.0" prefWidth="800.0">
                     <children>
-                        <GridPane fx:id="gridPaneCoord" gridLinesVisible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <GridPane fx:id="gridPaneCoord" hgap="15" vgap="15" gridLinesVisible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" prefWidth="400.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" prefWidth="400.0" />

@@ -9,13 +9,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@/dk/easv/myticketsevent/view/css/adminStyles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.AdminDController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dk.easv.myticketsevent.GUI.AdminDController">
 
     <!-- Верхня панель -->
     <children>
-        <HBox prefHeight="50.0" prefWidth="800.0" spacing="10" alignment="CENTER_LEFT">
+        <HBox prefHeight="50.0" prefWidth="800.0" spacing="10">
             <children>
-                <ImageView fitHeight="49.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="49.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../picture/Logo.png" />
                     </image>
@@ -31,11 +33,11 @@
                 </MFXButton>
                 <MFXButton fx:id="createUserButton" onAction="#createCoordinator" prefHeight="49.0" prefWidth="200.0" text="Create Coordinator" />
 
-                <HBox alignment="CENTER_RIGHT" prefWidth="300.0">
+                <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="313.0">
                     <children>
-                        <MFXButton fx:id="logOutBtnAdm" onAction="#logOutAdm" prefHeight="49.0" prefWidth="120.0" text="LogOut">
+                        <MFXButton fx:id="logOutBtnAdm" onAction="#logOutAdm" prefHeight="49.0" prefWidth="130.0" text="LogOut">
                             <graphic>
-                                <ImageView fitHeight="28.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../picture/logout.png" />
                                     </image>
@@ -49,13 +51,12 @@
 
         <!-- Основний контент -->
         <ScrollPane layoutY="50.0" fitToWidth="true" fitToHeight="true"
-                    prefHeight="550.0" prefWidth="800.0"
                     AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                     AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
             <content>
-                <AnchorPane fx:id="contentContainer" prefHeight="550.0" prefWidth="800.0">
+                <AnchorPane fx:id="contentContainer" prefWidth="800.0">
                     <children>
-                        <GridPane fx:id="gridPaneAdmin" gridLinesVisible="false" alignment="CENTER"
+                        <GridPane fx:id="gridPaneAdmin" hgap="15" vgap="15"
                                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columnConstraints>

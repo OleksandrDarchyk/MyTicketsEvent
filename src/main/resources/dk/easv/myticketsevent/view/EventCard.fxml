@@ -10,7 +10,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane fx:id="gridPane" prefHeight="161.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.EventCardController" stylesheets="@/dk/easv/myticketsevent/view/css/styles.css">
+<GridPane fx:id="gridPane" prefHeight="161.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+          styleClass="event-card"
+          fx:controller="dk.easv.myticketsevent.GUI.EventCardController"
+          stylesheets="@/dk/easv/myticketsevent/view/css/styles.css">
 
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" />
