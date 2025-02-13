@@ -6,10 +6,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -94,6 +97,30 @@ public class AdminDController implements Initializable {
         System.out.println("✅ Головний екран оновлено");
     }
 
+    @FXML
     public void logOutAdm(ActionEvent actionEvent) {
+        try {
+            // Завантажуємо екран входу
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/LoginView.fxml"));
+            Parent root = loader.load();
+
+            // Отримуємо поточне вікно
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            // Створюємо нову сцену та додаємо стиль
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/dk/easv/myticketsevent/view/css/styles.css").toExternalForm());
+
+            // Встановлюємо сцену та показуємо вікно
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+
+            System.out.println("✅ Адміністратор вийшов з системи.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("❌ Помилка завантаження LoginView.fxml");
+        }
     }
+
 }

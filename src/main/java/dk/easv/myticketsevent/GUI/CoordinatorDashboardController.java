@@ -129,6 +129,30 @@ public class CoordinatorDashboardController implements Initializable {
         }
     }
 
+    @FXML
     public void logOut(ActionEvent actionEvent) {
+        try {
+            // Завантажуємо екран входу
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/LoginView.fxml"));
+            Parent root = loader.load();
+
+            // Отримуємо поточне вікно
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            // Створюємо нову сцену та додаємо стиль
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/dk/easv/myticketsevent/view/css/styles.css").toExternalForm());
+
+            // Встановлюємо сцену та показуємо вікно
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+
+            System.out.println("✅ Координатор вийшов з системи.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("❌ Помилка завантаження LoginView.fxml");
+        }
     }
+
 }
