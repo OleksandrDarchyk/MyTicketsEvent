@@ -23,7 +23,6 @@
 
             <VBox prefHeight="192.0" prefWidth="283.0" spacing="15">
                 <Label fx:id="ticketEvent" styleClass="event-name" />
-                <Label fx:id="couponEvent" styleClass="event-name" text="Event Name" />
 
                 <VBox spacing="5">
                     <HBox alignment="CENTER_LEFT" spacing="10">
