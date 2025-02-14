@@ -21,14 +21,12 @@
    </columnConstraints>
 
    <children>
-      <!-- Зображення події -->
       <ImageView fx:id="eventImage" fitHeight="135.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
          <image>
             <Image url="@../image/1.png" />
          </image>
       </ImageView>
 
-      <!-- Інформація про подію -->
       <VBox alignment="CENTER_LEFT" spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
          <children>
             <Label fx:id="eventNamelbl" text="Name" />
@@ -47,10 +45,8 @@
          </children>
       </VBox>
 
-      <!-- Додаткова інформація -->
       <Button layoutY="140.0" text="Extra Information" onAction="#showExtraInformation" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" styleClass="button" />
 
-      <!-- Кнопка видалення -->
       <Button fx:id="deleteBtn" alignment="CENTER_RIGHT" onAction="#deleteEvent" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="button">
          <graphic>
             <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">

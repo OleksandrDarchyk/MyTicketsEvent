@@ -14,20 +14,16 @@
 
     <VBox alignment="TOP_CENTER" spacing="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
 
-        <!-- Заголовок купона -->
         <VBox alignment="CENTER" spacing="10" styleClass="header-box">
             <Label styleClass="header-label" text="DISCOUNT COUPON" />
         </VBox>
 
-        <!-- Основний контент купона -->
         <HBox alignment="CENTER_LEFT" spacing="30" styleClass="ticket-content">
 
-            <!-- Штрих-код по краю -->
             <VBox alignment="CENTER" spacing="20">
                 <ImageView fx:id="couponBarcode" fitHeight="190.0" fitWidth="56.0" styleClass="barcode" />
             </VBox>
 
-            <!-- Деталі купона -->
             <VBox prefHeight="192.0" prefWidth="283.0" spacing="15">
                 <Label fx:id="couponEvent" styleClass="event-name" text="Event Name" />
                   <Label styleClass="detail-label" text="Coupon Code:">
@@ -77,7 +73,6 @@
                 </VBox>
             </VBox>
 
-            <!-- QR-код + логотип -->
             <VBox alignment="CENTER" spacing="20">
                 <ImageView fitHeight="50" fitWidth="150" preserveRatio="true" styleClass="logo">
                     <image>
@@ -89,7 +84,6 @@
 
         </HBox>
 
-        <!-- Нижній блок -->
         <VBox alignment="CENTER" spacing="10">
             <Button fx:id="printCouponButton" onAction="#printCoupon" styleClass="print-button" text="Print Coupon" />
             <Label styleClass="footer-text" text="Present this coupon at checkout" />
@@ -97,7 +91,6 @@
         </VBox>
     </VBox>
 
-    <!-- Позначка дійсності купона -->
     <HBox alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="69.0" spacing="10" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">
         <Label styleClass="valid-label" text="Valid Coupon" />
     </HBox>
