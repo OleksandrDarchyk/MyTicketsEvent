@@ -1,5 +1,10 @@
 package dk.easv.myticketsevent.GUI;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +40,7 @@ public class TicketController implements Initializable {
 
     @FXML
     private AnchorPane ticketAnchor;
+
     @FXML
     private Label ticketEvent, ticketLocation, ticketDate, ticketTime, ticketParticipantName;
     @FXML
@@ -112,16 +118,22 @@ public class TicketController implements Initializable {
         stage.close();
     }
 
-    private Image generateQRCode(String data) throws Exception {
-        BufferedImage qrImage = new BufferedImage(120, 120, BufferedImage.TYPE_INT_RGB);
-        Graphics2D g = qrImage.createGraphics();
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, 120, 120);
-        g.setColor(Color.BLACK);
-        g.fillOval(10, 10, 100, 100);
-        g.dispose();
-        return SwingFXUtils.toFXImage(qrImage, null);
+    public void generateQRCode(String data) {
+        try {
+            int width = 150;
+            int height = 150;
+
+            BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, width, height);
+            BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(matrix);
+
+            Image qrImage = SwingFXUtils.toFXImage(bufferedImage, null);
+            imgQRCode.setImage(qrImage);
+        } catch (WriterException e) {
+            e.printStackTrace();
+            System.out.println("❌ Помилка генерації QR-коду.");
+        }
     }
+
 
     private Image generateBarcode(String data) throws Exception {
         BufferedImage barcodeImage = new BufferedImage(200, 50, BufferedImage.TYPE_INT_RGB);
@@ -136,6 +148,7 @@ public class TicketController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        generateQRCode("CPN-2024-ABCD");
         System.out.println("✅ TicketController Initialized");
     }
 

@@ -8,66 +8,88 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="couponPane" prefHeight="400" prefWidth="600" stylesheets="@css/ticket.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.CouponController">
 
-    <VBox fx:id="couponContainer" alignment="TOP_CENTER" spacing="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
+    <VBox alignment="TOP_CENTER" spacing="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
 
-        <!-- Header Section -->
+        <!-- Заголовок купона -->
         <VBox alignment="CENTER" spacing="10" styleClass="header-box">
-            <ImageView fitHeight="40" fitWidth="150" preserveRatio="true" styleClass="logo">
-                <image>
-                    <Image url="@../picture/Login.png" />
-                </image>
-            </ImageView>
             <Label styleClass="header-label" text="DISCOUNT COUPON" />
         </VBox>
 
-        <!-- Coupon Content -->
+        <!-- Основний контент купона -->
         <HBox alignment="CENTER_LEFT" spacing="30" styleClass="ticket-content">
 
-            <!-- Coupon Details -->
-            <VBox prefWidth="300" spacing="15">
-                <Label fx:id="couponEvent" styleClass="event-name" text="Event Name"/>
+            <!-- Штрих-код по краю -->
+            <VBox alignment="CENTER" spacing="20">
+                <ImageView fx:id="couponBarcode" fitHeight="190.0" fitWidth="56.0" styleClass="barcode" />
+            </VBox>
+
+            <!-- Деталі купона -->
+            <VBox prefHeight="192.0" prefWidth="283.0" spacing="15">
+                <Label fx:id="couponEvent" styleClass="event-name" text="Event Name" />
+                  <Label styleClass="detail-label" text="Coupon Code:">
+                      <font>
+                          <Font size="18.0" />
+                      </font>
+                  </Label>
+
                 <VBox spacing="5">
                     <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="detail-label" text="Valid Until:" />
-                        <Label fx:id="validDate" styleClass="value-label" text="2024-12-31" />
+                        <Label styleClass="detail-label" text="Valid Until:">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="validDate" prefHeight="18.0" prefWidth="161.0" styleClass="value-label" />
                     </HBox>
+
                     <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="detail-label" text="Location:" />
-                        <Label fx:id="couponLocation" styleClass="value-label" text="EASV Bar" />
+                        <Label styleClass="detail-label" text="Location:">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="couponLocation" prefHeight="18.0" prefWidth="170.0" styleClass="value-label" />
                     </HBox>
 
                     <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="detail-label" text="Holder:" />
-                        <Label fx:id="couponHolder" styleClass="value-label" text="John Doe" />
+                        <Label styleClass="detail-label" text="Holder:">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="couponHolder" prefHeight="18.0" prefWidth="162.0" styleClass="value-label" />
                     </HBox>
 
-
                     <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="detail-label" text="Coupon Code:" />
-                        <Label fx:id="couponCode" styleClass="value-label" text="CPN-2024-ABCD" />
+                        <Label fx:id="couponCode" prefHeight="18.0" prefWidth="180.0" styleClass="value-label" />
                     </HBox>
                 </VBox>
 
-                <Line styleClass="separator-line" />
+                <Line />
 
                 <VBox spacing="5">
                     <Label styleClass="detail-label" text="Terms &amp; Conditions" />
-                    <Label fx:id="termsLabel" styleClass="value-label"
-                           text="1. Valid for selected events only&#10;2. Non-transferable&#10;3. One-time use" />
+                    <Label fx:id="termsLabel" styleClass="value-label" text="1. Valid for selected events only&#10;2. Non-transferable&#10;3. One-time use" />
                 </VBox>
             </VBox>
 
-            <!-- Codes Section -->
+            <!-- QR-код + логотип -->
             <VBox alignment="CENTER" spacing="20">
-                <ImageView fx:id="couponQrCode" fitHeight="120" fitWidth="120" styleClass="qr-code" />
-                <Label styleClass="footer-text" text="Scan QR code to redeem" />
+                <ImageView fitHeight="50" fitWidth="150" preserveRatio="true" styleClass="logo">
+                    <image>
+                        <Image url="@../picture/Logo.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="couponQrCode" fitHeight="97.0" fitWidth="120" styleClass="qr-code" />
             </VBox>
+
         </HBox>
 
-        <!-- Footer -->
+        <!-- Нижній блок -->
         <VBox alignment="CENTER" spacing="10">
             <Button fx:id="printCouponButton" onAction="#printCoupon" styleClass="print-button" text="Print Coupon" />
             <Label styleClass="footer-text" text="Present this coupon at checkout" />
@@ -75,8 +97,8 @@
         </VBox>
     </VBox>
 
-    <!-- Decorative Elements -->
-    <HBox alignment="CENTER_RIGHT" spacing="10" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">
+    <!-- Позначка дійсності купона -->
+    <HBox alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="69.0" spacing="10" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">
         <Label styleClass="valid-label" text="Valid Coupon" />
     </HBox>
 

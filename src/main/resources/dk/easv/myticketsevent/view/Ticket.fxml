@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="ticketPane" prefHeight="400" prefWidth="600" stylesheets="@css/ticket.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.TicketController">
 
@@ -15,51 +16,69 @@
 
         <!-- Header Section -->
         <VBox alignment="CENTER" spacing="10" styleClass="header-box">
-            <ImageView fitHeight="40" fitWidth="150" preserveRatio="true" styleClass="logo">
-                <image>
-                    <Image url="@../picture/Login.png" />
-                </image>
-            </ImageView>
-            <Label styleClass="header-label" text="E-TICKET" />
+            <Label styleClass="header-label" text="TICKET" />
         </VBox>
 
         <!-- Ticket Content -->
         <HBox alignment="CENTER_LEFT" spacing="30" styleClass="ticket-content">
+             <ImageView fx:id="imgBarcode" fitHeight="190.0" fitWidth="56.0" styleClass="barcode" />
 
             <!-- Event Details -->
-            <VBox prefWidth="300" spacing="15">
+            <VBox prefHeight="192.0" prefWidth="283.0" spacing="15">
                 <Label fx:id="ticketEvent" styleClass="event-name" />
+            <Label fx:id="couponEvent" styleClass="event-name" text="Event Name" />
 
                 <VBox spacing="5">
                     <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="detail-label" text="Date:" />
-                        <Label fx:id="ticketDate" styleClass="value-label" />
+                        <Label styleClass="detail-label" text="Event Date:">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="ticketDate" prefHeight="18.0" prefWidth="198.0" styleClass="value-label" />
                     </HBox>
 
                     <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="detail-label" text="Time:" />
-                        <Label fx:id="ticketTime" styleClass="value-label" />
+                        <Label styleClass="detail-label" text="Event Time:">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="ticketTime" prefHeight="18.0" prefWidth="200.0" styleClass="value-label" />
                     </HBox>
 
                     <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="detail-label" text="Location:" />
-                        <Label fx:id="ticketLocation" styleClass="value-label" />
+                        <Label styleClass="detail-label" text="Event Location:">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="ticketLocation" prefHeight="18.0" prefWidth="180.0" styleClass="value-label" />
                     </HBox>
                 </VBox>
 
-                <Line styleClass="separator-line" />
+                <Line />
 
                 <VBox spacing="5">
-                    <Label styleClass="detail-label" text="User" />
-                    <Label fx:id="ticketParticipantName" styleClass="participant-label" />
+                    <Label prefWidth="41.0" styleClass="detail-label" text="User">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="ticketParticipantName" styleClass="participant-label" textFill="WHITE" />
                 </VBox>
             </VBox>
 
-            <!-- Codes Section -->
+            <!-- Barcode Section (Moved to Left) -->
             <VBox alignment="CENTER" spacing="20">
-                <ImageView fx:id="imgQRCode" fitHeight="120" fitWidth="120" styleClass="qr-code" />
-                <ImageView fx:id="imgBarcode" fitHeight="50" fitWidth="200" styleClass="barcode" />
+               <ImageView fitHeight="50" fitWidth="150" preserveRatio="true" styleClass="logo">
+                   <image>
+                       <Image url="@../picture/Logo.png" />
+                   </image>
+               </ImageView>
+                <ImageView fx:id="imgQRCode" fitHeight="97.0" fitWidth="120" styleClass="qr-code" />
             </VBox>
+
         </HBox>
 
         <!-- Footer -->
@@ -71,7 +90,7 @@
     </VBox>
 
     <!-- Decorative Elements -->
-    <HBox alignment="CENTER_RIGHT" spacing="10" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">
+    <HBox alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="69.0" spacing="10" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">
         <Label styleClass="valid-label" text="Valid Ticket" />
     </HBox>
 
