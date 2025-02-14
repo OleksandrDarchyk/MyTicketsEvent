@@ -30,7 +30,7 @@
 
                 <VBox spacing="5">
                     <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="detail-label" text="Event Date:">
+                        <Label prefHeight="18.0" prefWidth="98.0" styleClass="detail-label" text="Event Date:">
                             <font>
                                 <Font size="18.0" />
                             </font>
@@ -39,7 +39,7 @@
                     </HBox>
 
                     <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="detail-label" text="Event Time:">
+                        <Label prefHeight="18.0" prefWidth="111.0" styleClass="detail-label" text="Event Time:">
                             <font>
                                 <Font size="18.0" />
                             </font>
@@ -48,7 +48,7 @@
                     </HBox>
 
                     <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label styleClass="detail-label" text="Event Location:">
+                        <Label prefHeight="18.0" prefWidth="132.0" styleClass="detail-label" text="Event Location:">
                             <font>
                                 <Font size="18.0" />
                             </font>
