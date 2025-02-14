@@ -39,7 +39,7 @@ public class CouponController implements Initializable {
     public void setDetails(String eventName, String location, String participantName) {
         System.out.println("🔍 Setting details: " + eventName + ", " + location + ", " + participantName);
         if (couponEvent == null) {
-            System.out.println("couponEvent не ініціалізовано!");
+            System.out.println("couponEvent not initialized!");
             return;
         }
         couponEvent.setText(eventName);

@@ -40,7 +40,7 @@
 
                 // Get AdminDController and update the main panel
                 AdminDController controller = loader.getController();
-                controller.populateGridPane(); // Оновлення подій
+                controller.populateGridPane();
 
                 // Get the main GridPane (needed for access from `CreateCoordinator.fxml`)
                 AnchorPane root = (AnchorPane) createCoordinatorAnchorPane.getParent();

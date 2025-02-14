@@ -15,14 +15,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class ManageEventController {
@@ -42,17 +39,9 @@ public class ManageEventController {
     @FXML
     private ListView<String> participantsList;
 
-    @FXML
-    private TextField searchField;
 
     @FXML
     private MFXButton closeButton;
-
-    @FXML
-    private MFXButton btnGetTicket;
-
-    @FXML
-    private MFXButton btnGetCoupon;
 
     private ObservableList<String> participants = FXCollections.observableArrayList();
     private Event event;
@@ -73,11 +62,11 @@ public class ManageEventController {
 
     @FXML
     private void addParticipant(ActionEvent event) {
-        System.out.println("DEBUG: Натиснуто кнопку Add");
+        System.out.println("DEBUG: Add button clicked");
         System.out.println("DEBUG: contentContainer = " + contentContainer);
 
         if (contentContainer == null) {
-            showAlert("Error", "contentContainer не ініціалізовано! Перевір FXML.");
+            showAlert("Error", "contentContainer is not initialized! Check FXML.");
             return;
         }
 
@@ -85,11 +74,11 @@ public class ManageEventController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/CreateCustomer.fxml"));
             Node newContent = loader.load();
 
-            // Отримуємо контролер CreateCustomerController
+            // Get CreateCustomerController
             CreateCostumerController controller = loader.getController();
             controller.setOnCustomerAdded(this::updateParticipantsList);
 
-            // Замінюємо вміст `contentContainer`
+            // Replace the content of `contentContainer`
             contentContainer.getChildren().clear();
             contentContainer.getChildren().add(newContent);
 
@@ -98,29 +87,6 @@ public class ManageEventController {
             showAlert("Error", "Cannot open CreateCustomer.fxml");
         }
     }
-
-    @FXML
-    public void cancelCostumer(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/ManageEvents.fxml"));
-            Node manageEventsView = loader.load();
-
-            // Отримуємо контролер ManageEventController, щоб оновити учасників
-            ManageEventController controller = loader.getController();
-            controller.setEvent(this.event); // Передаємо поточний івент
-
-            // Очищаємо контейнер і повертаємо ManageEvents.fxml
-            AnchorPane root = (AnchorPane) contentContainer.getParent();
-
-            root.getChildren().clear();
-            root.getChildren().add(manageEventsView);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
     private void updateParticipantsList(String customerName) {
         if (customerName != null && !customerName.isEmpty()) {
@@ -145,12 +111,12 @@ public class ManageEventController {
             showAlert("Error", "Please fill in all event details before saving.");
             return;
         }
-        System.out.println("✅ Event saved: " + txtLocation.getText() + " on " + txtDate.getText());
+        System.out.println(" Event saved: " + txtLocation.getText() + " on " + txtDate.getText());
     }
 
     @FXML
     private void deleteEvent(ActionEvent event) {
-        System.out.println("❌ Event deleted: " + eventTitleLabel.getText());
+        System.out.println(" Event deleted: " + eventTitleLabel.getText());
     }
 
     @FXML
@@ -165,10 +131,10 @@ public class ManageEventController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/Ticket.fxml"));
             Parent root = loader.load();
 
-            // Отримуємо контролер після завантаження
+            // Get the controller after loading
             TicketController controller = loader.getController();
 
-            // Парсимо дату та час
+            // Parse date and time
             String dateTimeString = txtDate.getText();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             LocalDateTime dateTime;
@@ -180,7 +146,7 @@ public class ManageEventController {
                 return;
             }
 
-            // Викликаємо setDetails() тільки після ініціалізації
+            // Call setDetails() only after initialization
             controller.setDetails(eventTitleLabel.getText(), txtLocation.getText(),
                     dateTime.toLocalDate(), dateTime.toLocalTime(), "John Doe");
 
@@ -201,11 +167,11 @@ public class ManageEventController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/Coupon.fxml"));
             Parent root = loader.load();
 
-            // Отримуємо контролер купона
+            // Get coupon controller
             CouponController controller = loader.getController();
             controller.setDetails(eventTitleLabel.getText(), txtLocation.getText(), "John Doe");
 
-            // Відкриваємо вікно купона
+            // Open coupon window
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Discount Coupon");
@@ -215,10 +181,6 @@ public class ManageEventController {
             showAlert("Error", "Cannot open coupon window.");
         }
     }
-
-
-
-
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -1,13 +1,10 @@
 package dk.easv.myticketsevent.GUI;
 
 import dk.easv.myticketsevent.BE.Event;
-import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
@@ -15,8 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import dk.easv.myticketsevent.GUI.ManageEventController;
 
 import java.io.IOException;
 
@@ -25,8 +20,7 @@ public class EventCardController {
     private Label eventLocationlbl, eventNamelbl, eventTimelbl;
     @FXML
     private ImageView eventImage;
-    @FXML
-    private Button deleteBtn;
+
     @FXML
     private Button btnManageEvents;
 
@@ -37,7 +31,7 @@ public class EventCardController {
     public void setUserRole(String role) {
         this.userRole = role;
         if ("Admin".equalsIgnoreCase(role)) {
-            btnManageEvents.setDisable(true); // Блокуємо кнопку, замість приховування
+            btnManageEvents.setDisable(true); // Disable the button instead of hiding it
         }
     }
 
@@ -47,14 +41,14 @@ public class EventCardController {
         eventLocationlbl.setText(event.getLocation());
         eventTimelbl.setText(event.getDateTime());
 
-        // Отримуємо індекс події (імітуємо унікальні зображення)
+        // Get the event index (simulate unique images)
         int imageIndex = (event.hashCode() % 8 + 8) % 8 + 1;
         String imagePath = "/dk/easv/myticketsevent/image/" + imageIndex + ".png";
 
         if (eventImage != null) {
             eventImage.setImage(new Image(getClass().getResourceAsStream(imagePath)));
         } else {
-            System.out.println("❌ eventImage не ініціалізовано!");
+            System.out.println(" eventImage not initialized!");
         }
     }
 
@@ -67,13 +61,13 @@ public class EventCardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/ManageEvents.fxml"));
             Node manageEventsView = loader.load();
 
-            // Отримуємо контролер ManageEventController
+            // Get the ManageEventController
             ManageEventController controller = loader.getController();
             if (event != null) {
                 controller.setEvent(this.event);
             }
 
-            // Замінюємо вміст `parentContainer`
+            // Replace the content of `parentContainer`
             if (parentContainer != null) {
                 parentContainer.getChildren().clear();
                 parentContainer.getChildren().add(manageEventsView);
@@ -82,17 +76,17 @@ public class EventCardController {
                 AnchorPane.setLeftAnchor(manageEventsView, 0.0);
                 AnchorPane.setRightAnchor(manageEventsView, 0.0);
             } else {
-                System.out.println("❌ Parent container is null.");
+                System.out.println(" Parent container is null.");
             }
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("❌ Error loading ManageEvents.fxml");
+            System.out.println(" Error loading ManageEvents.fxml");
         }
     }
 
     public void deleteEvent(ActionEvent actionEvent) {
-        System.out.println("🗑 Видалення події: " + event.getName());
+        System.out.println("🗑 Deleting event: " + event.getName());
     }
 
     @FXML
@@ -104,15 +98,13 @@ public class EventCardController {
                 "🕒 Date & Time: " + eventTimelbl.getText() + "\n" +
                 "ℹ️ Additional details about this event will be added later.");
 
-        // Отримуємо діалогове вікно (DialogPane)
+        // Get the dialog window (DialogPane)
         DialogPane dialogPane = alert.getDialogPane();
 
-        // Додаємо стилі
+        // Add styles
         dialogPane.getStylesheets().add(getClass().getResource("/dk/easv/myticketsevent/view/css/styles.css").toExternalForm());
         dialogPane.getStyleClass().add("custom-alert");
 
         alert.showAndWait();
     }
-
-
 }

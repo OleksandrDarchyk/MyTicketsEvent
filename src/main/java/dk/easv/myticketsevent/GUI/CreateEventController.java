@@ -31,11 +31,11 @@ public class CreateEventController {
 
     @FXML
     public void initialize() {
-        // Заповнюємо випадаючі списки часовими слотами
+        // Populate dropdown lists with time slots
         comboStartTime.getItems().addAll("10:00", "12:00", "14:00", "16:00", "18:00", "20:00");
         comboEndTime.getItems().addAll("11:00", "13:00", "15:00", "17:00", "19:00", "21:00");
 
-        // Додаємо фіктивних координаторів
+        // Add dummy coordinators
         comboAssignCoordinator.getItems().addAll("John Doe", "Alice Smith", "Michael Brown");
     }
 
@@ -52,17 +52,17 @@ public class CreateEventController {
             return;
         }
 
-        // Конвертуємо строку в LocalTime
+        // Convert string to LocalTime
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime startTime = LocalTime.parse(startTimeStr, timeFormatter);
 
-        // Створюємо подію
+        // Create event
         Event newEvent = new Event(eventName, location, startDate.toString() + " " + startTime);
-        System.out.println("🎉 Event Created: " + newEvent);
+        System.out.println(" Event Created: " + newEvent);
 
-        // Створюємо квиток автоматично
+        // Automatically create a ticket
         Ticket newTicket = new Ticket(UUID.randomUUID(), eventName, location, startDate, startTime, "John Doe");
-        System.out.println("🎟 Ticket Created: " + newTicket);
+        System.out.println(" Ticket Created: " + newTicket);
 
         showAlert("Success", "Event and ticket created successfully!");
         closeWindow();
@@ -70,7 +70,7 @@ public class CreateEventController {
 
     @FXML
     public void cancelAction() {
-        System.out.println("❌ Event creation canceled.");
+        System.out.println(" Event creation canceled.");
         closeWindow();
     }
 

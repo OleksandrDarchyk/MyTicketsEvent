@@ -26,8 +26,8 @@ public class LoginViewController {
         String username = usernameField.getText().trim();  // Видаляємо зайві пробіли
         String password = passwordField.getText().trim();
 
-        System.out.println("DEBUG: Введений логін = [" + username + "]");
-        System.out.println("DEBUG: Введений пароль = [" + password + "]");
+        System.out.println("DEBUG: Entered username = [" + username + "]");
+        System.out.println("DEBUG: Entered password = [" + password + "]");
 
         if ("a".equals(username) && "123".equals(password)) {
             openDashboard("/dk/easv/myticketsevent/view/AdminDashboard.fxml", "Admin Dashboard");
@@ -41,34 +41,34 @@ public class LoginViewController {
 
     private void openDashboard(String fxmlPath, String title) {
         try {
-            System.out.println("DEBUG: Завантажую FXML -> " + fxmlPath); // Вивід у консоль
+            System.out.println("DEBUG: Loading FXML -> " + fxmlPath); // Console output
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             if (loader.getLocation() == null) {
-                throw new IOException("❌ FXML-файл не знайдено: " + fxmlPath);
+                throw new IOException(" FXML is not find " + fxmlPath);
             }
 
-            Parent root = loader.load();  // Завантажуємо FXML
+            Parent root = loader.load();  // Load FXML
 
-            // ✅ Створюємо нову сцену
+            // Create a new scene
             Scene scene = new Scene(root);
 
-            // ✅ Додаємо CSS до нової сцени
+            // Add CSS to the new scene
             scene.getStylesheets().add(getClass().getResource("/dk/easv/myticketsevent/view/css/styles.css").toExternalForm());
 
-            // ✅ Створюємо та відкриваємо нове вікно
+            // Create and open a new window
             Stage stage = new Stage();
             stage.setTitle(title);
             stage.setScene(scene);
             stage.show();
 
-            // Закриваємо вікно логіну
+            // Close the login window
             Stage currentStage = (Stage) loginButton.getScene().getWindow();
             currentStage.close();
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("❌ Помилка завантаження: " + fxmlPath);
+            System.out.println("Error loading: " + fxmlPath);
         }
     }
 
