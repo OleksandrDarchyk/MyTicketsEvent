@@ -6,17 +6,14 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import javafx.scene.image.ImageView;
-
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,9 +25,20 @@ public class CouponController implements Initializable {
     @FXML
     private ImageView couponQrCode;
 
+    // Нове посилання для штрих‑коду у купоні
+    @FXML
+    private ImageView couponBarcode;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("✅ CouponController Initialized");
+        String defaultCode = "CPN-2024-ABCD";
+        generateQRCode(defaultCode);
+        generateBarcode(defaultCode);
+    }
+
     public void setDetails(String eventName, String location, String participantName) {
         System.out.println("🔍 Setting details: " + eventName + ", " + location + ", " + participantName);
-        System.out.println("couponEvent = " + couponEvent); // Друк для перевірки
         if (couponEvent == null) {
             System.out.println("❌ couponEvent не ініціалізовано!");
             return;
@@ -38,21 +46,11 @@ public class CouponController implements Initializable {
         couponEvent.setText(eventName);
         couponLocation.setText(location);
         couponHolder.setText(participantName);
-    }
 
-
-    @FXML
-    private void printCoupon() {
-        System.out.println("🖨 Printing coupon for: " + couponEvent.getText());
-        Stage stage = (Stage) couponEvent.getScene().getWindow();
-        stage.close();  // Закриваємо вікно після друку
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("✅ CouponController Initialized");
-        generateQRCode("CPN-2024-ABCD");
-
+        // Використовуємо один і той же код для обох форматів (ви можете зробити його динамічним)
+        String couponCode = "CPN-2024-ABCD";
+        generateQRCode(couponCode);
+        generateBarcode(couponCode);
     }
 
     public void generateQRCode(String data) {
@@ -65,10 +63,32 @@ public class CouponController implements Initializable {
 
             Image qrImage = SwingFXUtils.toFXImage(bufferedImage, null);
             couponQrCode.setImage(qrImage);
-        } catch (WriterException  e) {
+        } catch (WriterException e) {
             e.printStackTrace();
             System.out.println("❌ Помилка генерації QR-коду.");
         }
     }
 
+    public void generateBarcode(String data) {
+        try {
+            int width = 200; // можна налаштувати розміри за потребою
+            int height = 50;
+
+            BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.CODE_128, width, height);
+            BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(matrix);
+
+            Image barcodeImage = SwingFXUtils.toFXImage(bufferedImage, null);
+            couponBarcode.setImage(barcodeImage);
+        } catch (WriterException e) {
+            e.printStackTrace();
+            System.out.println("❌ Помилка генерації штрих-коду.");
+        }
+    }
+
+    @FXML
+    private void printCoupon() {
+        System.out.println("🖨 Printing coupon for: " + couponEvent.getText());
+        Stage stage = (Stage) couponEvent.getScene().getWindow();
+        stage.close();
+    }
 }

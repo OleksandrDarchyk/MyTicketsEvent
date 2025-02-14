@@ -24,7 +24,7 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
+import java.awt.Desktop;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -32,7 +32,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
@@ -50,6 +49,7 @@ public class TicketController implements Initializable {
 
     private UUID ticketId;
 
+    // Якщо встановлюємо дані через дату та час – генеруємо штрих‑код
     public void setDetails(String eventName, String location, LocalDate date, LocalTime time, String participantName) {
         if (ticketEvent == null || ticketLocation == null || ticketDate == null || ticketTime == null || ticketParticipantName == null) {
             System.err.println("❌ FXML elements are not initialized!");
@@ -61,8 +61,11 @@ public class TicketController implements Initializable {
         ticketDate.setText(date.toString());
         ticketTime.setText(time.toString());
         ticketParticipantName.setText(participantName);
-    }
 
+        // Генеруємо унікальний код квитка – наприклад, за допомогою UUID
+        String ticketCode = UUID.randomUUID().toString();
+        generateBarcode(ticketCode);
+    }
 
     public void handlePrint(ActionEvent actionEvent) throws IOException {
         printButton.setVisible(false);
@@ -72,31 +75,26 @@ public class TicketController implements Initializable {
         float pdfWidth = 595;
         float pdfHeight = pdfWidth / aspectRatio;
 
-        // Створюємо PDF документ
         PDDocument document = new PDDocument();
         PDPage page = new PDPage(new PDRectangle(pdfWidth, pdfHeight));
         document.addPage(page);
 
-        // Конвертація сцени у BufferedImage
         WritableImage fxImage = new WritableImage((int) scene.getWidth(), (int) scene.getHeight());
         scene.snapshot(fxImage);
         BufferedImage image = SwingFXUtils.fromFXImage(fxImage, null);
 
-        // Конвертація у байтовий масив
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ImageIO.write(image, "PNG", outputStream);
         byte[] imageBytes = outputStream.toByteArray();
 
-        // Додавання зображення у PDF
         PDImageXObject xImage = PDImageXObject.createFromByteArray(document, imageBytes, "ticket");
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
         contentStream.drawImage(xImage, 0, 0, pdfWidth, pdfHeight);
         contentStream.close();
 
-        // Збереження PDF
         File directory = new File("tickets/");
         if (!directory.exists()) {
-            directory.mkdirs();  // Створює папку, якщо її немає
+            directory.mkdirs();
         }
 
         String event = ticketEvent.getText().replaceAll("\\s+", "_");
@@ -105,7 +103,6 @@ public class TicketController implements Initializable {
         document.save(outputFile);
         document.close();
 
-        // Автоматично відкриває PDF
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.OPEN)) {
@@ -113,7 +110,6 @@ public class TicketController implements Initializable {
             }
         }
 
-        // Закриття вікна квитка
         Stage stage = (Stage) ticketAnchor.getScene().getWindow();
         stage.close();
     }
@@ -134,16 +130,29 @@ public class TicketController implements Initializable {
         }
     }
 
+    public void generateBarcode(String data) {
+        try {
+            int width = 200;
+            int height = 50;
 
-    private Image generateBarcode(String data) throws Exception {
-        BufferedImage barcodeImage = new BufferedImage(200, 50, BufferedImage.TYPE_INT_RGB);
-        Graphics2D g = barcodeImage.createGraphics();
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, 200, 50);
-        g.setColor(Color.BLACK);
-        g.fillRect(20, 10, 160, 30);
-        g.dispose();
-        return SwingFXUtils.toFXImage(barcodeImage, null);
+            BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.CODE_128, width, height);
+            BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(matrix);
+
+            Image barcodeImage = SwingFXUtils.toFXImage(bufferedImage, null);
+            imgBarcode.setImage(barcodeImage);
+        } catch (WriterException e) {
+            e.printStackTrace();
+            System.out.println("❌ Помилка генерації штрих-коду.");
+        }
+    }
+
+    // Інший варіант встановлення даних, який також генерує штрих‑код
+    public void setDetails(String eventName, String location, String participantName, String ticketId) {
+        ticketEvent.setText(eventName);
+        ticketLocation.setText(location);
+        ticketParticipantName.setText(participantName);
+
+        generateBarcode(ticketId);
     }
 
     @Override
@@ -153,5 +162,6 @@ public class TicketController implements Initializable {
     }
 
     public void printTicket(ActionEvent actionEvent) {
+        // Реалізація друку квитка за потреби
     }
 }
