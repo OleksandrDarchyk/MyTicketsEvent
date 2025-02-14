@@ -1,47 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<AnchorPane id="AnchorPane" fx:id="eventInfoAnchorPane" prefHeight="553.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dk.easv.myticketsevent.GUI.ManageEventController">
 
-<AnchorPane id="AnchorPane" fx:id="eventInfoAnchorPane" prefHeight="553.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.ManageEventController">
    <children>
-      <!-- Блок інформації про подію -->
-      <VBox layoutX="20.0" layoutY="20.0" prefHeight="315.0" prefWidth="300.0" spacing="10">
-         <children>
-            <Label fx:id="eventTitleLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Event Name" />
-            <MFXTextField fx:id="txtLocation" floatMode="BORDER" floatingText="Location" />
-            <MFXTextField fx:id="txtDate" floatMode="BORDER" floatingText="Date &amp; Time" />
-            <MFXComboBox fx:id="comboAssignCoordinator" floatMode="BORDER" floatingText="Assign Coordinator" />
-         </children>
-      </VBox>
+      <!-- Контейнер для зміни вмісту -->
+      <AnchorPane fx:id="contentContainer" prefHeight="553.0" prefWidth="800.0">
 
-      <!-- Список учасників -->
-      <VBox layoutX="338.0" layoutY="20.0" prefHeight="354.0" prefWidth="441.0" spacing="10">
-         <children>
-            <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Customer" />
-            <ListView fx:id="participantsList" prefHeight="250.0" />
-            <HBox spacing="10">
-               <MFXButton onAction="#addParticipant" text="Add" />
-            </HBox>
-            <MFXButton onAction="#deleteParticipant" text="Remove Selected" />
-         </children>
-      </VBox>
+         <!-- Блок інформації про подію -->
+         <VBox layoutX="20.0" layoutY="20.0" prefHeight="315.0" prefWidth="300.0" spacing="10">
+            <children>
+               <Label fx:id="eventTitleLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Event Name" />
+               <MFXTextField fx:id="txtLocation" floatMode="BORDER" floatingText="Location" />
+               <MFXTextField fx:id="txtDate" floatMode="BORDER" floatingText="Date &amp; Time" />
+               <MFXComboBox fx:id="comboAssignCoordinator" floatMode="BORDER" floatingText="Assign Coordinator" />
+            </children>
+         </VBox>
 
-      <!-- Панель дій -->
-      <HBox layoutX="8.0" layoutY="499.0" prefHeight="27.0" prefWidth="773.0" spacing="10">
-         <children>
-            <MFXButton onAction="#saveEvent" text="Save Changes" />
-            <MFXButton onAction="#deleteEvent" text="Delete Event" />
-            <MFXButton fx:id="closeButton" onAction="#close" text="Close" />
-            <MFXButton fx:id="btnGetTicket" onAction="#getTicket" text="Get Ticket" />
-            <MFXButton fx:id="btnGetCoupon" onAction="#getCoupon" text="Get Coupon" />
-         </children>
-      </HBox>
+         <!-- Список учасників -->
+         <VBox layoutX="338.0" layoutY="20.0" prefHeight="354.0" prefWidth="441.0" spacing="10">
+            <children>
+               <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Customer" />
+               <ListView fx:id="participantsList" prefHeight="250.0" />
+               <HBox spacing="10">
+                  <MFXButton onAction="#addParticipant" text="Add" />
+               </HBox>
+               <MFXButton onAction="#deleteParticipant" text="Remove Selected" />
+            </children>
+         </VBox>
+
+         <!-- Панель дій -->
+         <HBox layoutX="8.0" layoutY="499.0" prefHeight="27.0" prefWidth="773.0" spacing="10">
+            <children>
+               <MFXButton onAction="#saveEvent" text="Save Changes" />
+               <MFXButton onAction="#deleteEvent" text="Delete Event" />
+               <MFXButton fx:id="closeButton" onAction="#close" text="Close" />
+               <MFXButton fx:id="btnGetTicket" onAction="#getTicket" text="Get Ticket" />
+               <MFXButton fx:id="btnGetCoupon" onAction="#getCoupon" text="Get Coupon" />
+            </children>
+         </HBox>
+      </AnchorPane>
    </children>
 </AnchorPane>

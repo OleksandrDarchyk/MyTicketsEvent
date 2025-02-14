@@ -3,7 +3,12 @@ package dk.easv.myticketsevent.GUI;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.util.function.Consumer;
 
 public class CreateCostumerController {
@@ -14,6 +19,13 @@ public class CreateCostumerController {
     private MFXTextField costumerEmailField;
 
     private Consumer<String> onCustomerAdded;
+
+    @FXML
+    private MFXTextField customerNameField;
+
+    @FXML
+    private MFXTextField customerEmailField;
+
 
     // Метод для встановлення callback-функції
     public void setOnCustomerAdded(Consumer<String> callback) {
@@ -40,13 +52,11 @@ public class CreateCostumerController {
         closeWindow();
     }
 
-    @FXML
-    private void cancelCostumer(ActionEvent actionEvent) {
-        closeWindow();
-    }
-
     private void closeWindow() {
         Stage stage = (Stage) costumerNameField.getScene().getWindow();
         stage.close();
+    }
+
+    public void cancelCostumer(ActionEvent actionEvent) {
     }
 }

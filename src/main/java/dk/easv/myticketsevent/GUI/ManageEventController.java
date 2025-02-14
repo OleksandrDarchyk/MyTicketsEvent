@@ -9,12 +9,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -55,6 +57,10 @@ public class ManageEventController {
     private ObservableList<String> participants = FXCollections.observableArrayList();
     private Event event;
 
+    @FXML
+    private AnchorPane contentContainer;
+
+
     public void setEvent(Event event) {
         this.event = event;
         eventTitleLabel.setText(event.getName());
@@ -67,25 +73,54 @@ public class ManageEventController {
 
     @FXML
     private void addParticipant(ActionEvent event) {
+        System.out.println("DEBUG: Натиснуто кнопку Add");
+        System.out.println("DEBUG: contentContainer = " + contentContainer);
+
+        if (contentContainer == null) {
+            showAlert("Error", "contentContainer не ініціалізовано! Перевір FXML.");
+            return;
+        }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/CreateCustomer.fxml"));
-            Parent root = loader.load();
+            Node newContent = loader.load();
 
-            // Отримуємо контролер CreateCostumerController
+            // Отримуємо контролер CreateCustomerController
             CreateCostumerController controller = loader.getController();
-
-            // Передаємо callback-функцію для оновлення списку
             controller.setOnCustomerAdded(this::updateParticipantsList);
 
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Add Customer");
-            stage.show();
+            // Замінюємо вміст `contentContainer`
+            contentContainer.getChildren().clear();
+            contentContainer.getChildren().add(newContent);
+
         } catch (IOException e) {
             e.printStackTrace();
-            showAlert("Error", "Cannot open CreateCustomer window.");
+            showAlert("Error", "Cannot open CreateCustomer.fxml");
         }
     }
+
+    @FXML
+    public void cancelCostumer(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/ManageEvents.fxml"));
+            Node manageEventsView = loader.load();
+
+            // Отримуємо контролер ManageEventController, щоб оновити учасників
+            ManageEventController controller = loader.getController();
+            controller.setEvent(this.event); // Передаємо поточний івент
+
+            // Очищаємо контейнер і повертаємо ManageEvents.fxml
+            AnchorPane root = (AnchorPane) contentContainer.getParent();
+
+            root.getChildren().clear();
+            root.getChildren().add(manageEventsView);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     private void updateParticipantsList(String customerName) {
         if (customerName != null && !customerName.isEmpty()) {
@@ -180,6 +215,8 @@ public class ManageEventController {
             showAlert("Error", "Cannot open coupon window.");
         }
     }
+
+
 
 
 
