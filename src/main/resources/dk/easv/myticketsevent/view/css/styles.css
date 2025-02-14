@@ -1,8 +1,8 @@
 .login-background {
-    -fx-background-color: #3B1D82; /* Просто синій */
+    -fx-background-color: #3B1D82;
 }
 .root {
-    -fx-background-color: #3B1D82; /* Темно-синій фон для всіх вікон */
+    -fx-background-color: #3B1D82;
 }
 
 .anchor-pane, .vbox, .grid-pane {
@@ -19,18 +19,18 @@
 }
 
 .button {
-    -fx-background-color: #E0A800; /* Яскравий жовтий */
-    -fx-text-fill: black; /* Чорний текст для контрасту */
+    -fx-background-color: #E0A800;
+    -fx-text-fill: black;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
-    -fx-border-color: #C5A200; /* Темніша жовта рамка */
+    -fx-border-color: #C5A200;
     -fx-border-width: 2px;
 }
 
 .button:hover {
-    -fx-background-color: #FFC107; /* Трохи темніший жовтий */
+    -fx-background-color: #FFC107;
 }
 
 .button:pressed {
@@ -39,28 +39,28 @@
     -fx-scale-y: 0.95;
 }
 .event-card {
-    -fx-background-color: #472A91; /* Темніший фіолетовий */
+    -fx-background-color: #472A91;
     -fx-background-radius: 15px;
     -fx-border-radius: 15px;
-    -fx-border-color: #FFD700; /* Жовта рамка */
+    -fx-border-color: #FFD700;
     -fx-border-width: 2px;
     -fx-padding: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.1, 3, 3);
 }
 .event-card:hover {
-    -fx-background-color: #5E36A0; /* Трохи світліший фіолетовий */
+    -fx-background-color: #5E36A0;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 15, 0.2, 3, 3);
 }
 .custom-alert {
-    -fx-background-color: #472A91; /* Фон темно-фіолетовий */
-    -fx-border-color: #FFD700; /* Жовта рамка */
+    -fx-background-color: #472A91;
+    -fx-border-color: #FFD700;
     -fx-border-width: 2px;
     -fx-background-radius: 15px;
     -fx-border-radius: 15px;
 }
 
 .custom-alert .header-panel {
-    -fx-background-color: #5E36A0; /* Трохи світліший заголовок */
+    -fx-background-color: #5E36A0;
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
@@ -72,7 +72,7 @@
 }
 
 .custom-alert .button-bar {
-    -fx-background-color: #3B1D82; /* Фон кнопок */
+    -fx-background-color: #3B1D82;
 }
 
 .custom-alert .button {
