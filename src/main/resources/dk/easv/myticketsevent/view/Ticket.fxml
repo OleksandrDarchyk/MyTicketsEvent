@@ -56,7 +56,7 @@
                 <Line />
 
                 <VBox spacing="5">
-                    <Label prefWidth="41.0" styleClass="detail-label" text="User">
+                    <Label prefWidth="41.0" styleClass="detail-label" text="Holder">
                         <font>
                             <Font size="18.0" />
                         </font>
