@@ -21,12 +21,12 @@
 
         <!-- Ticket Content -->
         <HBox alignment="CENTER_LEFT" spacing="30" styleClass="ticket-content">
-             <ImageView fx:id="imgBarcode" fitHeight="190.0" fitWidth="56.0" styleClass="barcode" />
+            <ImageView fx:id="imgBarcode" fitHeight="190.0" fitWidth="56.0" styleClass="barcode" />
 
             <!-- Event Details -->
             <VBox prefHeight="192.0" prefWidth="283.0" spacing="15">
                 <Label fx:id="ticketEvent" styleClass="event-name" />
-            <Label fx:id="couponEvent" styleClass="event-name" text="Event Name" />
+                <Label fx:id="couponEvent" styleClass="event-name" text="Event Name" />
 
                 <VBox spacing="5">
                     <HBox alignment="CENTER_LEFT" spacing="10">
@@ -71,11 +71,11 @@
 
             <!-- Barcode Section (Moved to Left) -->
             <VBox alignment="CENTER" spacing="20">
-               <ImageView fitHeight="50" fitWidth="150" preserveRatio="true" styleClass="logo">
-                   <image>
-                       <Image url="@../picture/Logo.png" />
-                   </image>
-               </ImageView>
+                <ImageView fitHeight="50" fitWidth="150" preserveRatio="true" styleClass="logo">
+                    <image>
+                        <Image url="@../picture/Logo.png" />
+                    </image>
+                </ImageView>
                 <ImageView fx:id="imgQRCode" fitHeight="97.0" fitWidth="120" styleClass="qr-code" />
             </VBox>
 
