@@ -21,7 +21,6 @@
         @FXML
         private MFXPasswordField passwordField;
 
-        // Метод для створення координатора
         @FXML
         private void createCoordinator() {
             String username = coordinatorNameField.getText();
@@ -32,18 +31,18 @@
                 return;
             }
 
-            System.out.println("✅ Creating coordinator: " + username);
+            System.out.println("Creating coordinator: " + username);
 
-            // Повертаємо `gridPaneAdmin` у початковий стан (AdminDController)
+            // Restore `gridPaneAdmin` to its initial state (AdminDController)
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/AdminDashboard.fxml"));
                 Node adminContent = loader.load();
 
-                // Отримуємо AdminDController і вставляємо головну панель назад
+                // Get AdminDController and update the main panel
                 AdminDController controller = loader.getController();
                 controller.populateGridPane(); // Оновлення подій
 
-                // Отримуємо головний GridPane (потрібен доступ з `CreateCoordinator.fxml`)
+                // Get the main GridPane (needed for access from `CreateCoordinator.fxml`)
                 AnchorPane root = (AnchorPane) createCoordinatorAnchorPane.getParent();
                 root.getChildren().clear();
                 root.getChildren().add(adminContent);
@@ -52,10 +51,10 @@
             }
         }
 
-        // Метод для скасування створення координатора
+        // Method to cancel coordinator creation
         @FXML
         public void cancel() {
-            System.out.println("❌ Action cancelled.");
+            System.out.println("Action cancelled");
             closeWindow();
         }
 

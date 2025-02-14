@@ -25,13 +25,12 @@ public class CouponController implements Initializable {
     @FXML
     private ImageView couponQrCode;
 
-    // Нове посилання для штрих‑коду у купоні
     @FXML
     private ImageView couponBarcode;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("✅ CouponController Initialized");
+        System.out.println(" CouponController Initialized");
         String defaultCode = "CPN-2024-ABCD";
         generateQRCode(defaultCode);
         generateBarcode(defaultCode);
@@ -40,14 +39,13 @@ public class CouponController implements Initializable {
     public void setDetails(String eventName, String location, String participantName) {
         System.out.println("🔍 Setting details: " + eventName + ", " + location + ", " + participantName);
         if (couponEvent == null) {
-            System.out.println("❌ couponEvent не ініціалізовано!");
+            System.out.println("couponEvent не ініціалізовано!");
             return;
         }
         couponEvent.setText(eventName);
         couponLocation.setText(location);
         couponHolder.setText(participantName);
 
-        // Використовуємо один і той же код для обох форматів (ви можете зробити його динамічним)
         String couponCode = "CPN-2024-ABCD";
         generateQRCode(couponCode);
         generateBarcode(couponCode);
@@ -65,13 +63,13 @@ public class CouponController implements Initializable {
             couponQrCode.setImage(qrImage);
         } catch (WriterException e) {
             e.printStackTrace();
-            System.out.println("❌ Помилка генерації QR-коду.");
+            System.out.println("Error generating QR code");
         }
     }
 
     public void generateBarcode(String data) {
         try {
-            int width = 200; // можна налаштувати розміри за потребою
+            int width = 200;
             int height = 50;
 
             BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.CODE_128, width, height);
@@ -81,7 +79,7 @@ public class CouponController implements Initializable {
             couponBarcode.setImage(barcodeImage);
         } catch (WriterException e) {
             e.printStackTrace();
-            System.out.println("❌ Помилка генерації штрих-коду.");
+            System.out.println("Error generating barcode");
         }
     }
 
