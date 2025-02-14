@@ -28,28 +28,21 @@ public class CoordinatorDashboardController implements Initializable {
     @FXML
     private GridPane gridPaneCoord;
     @FXML
-    private AnchorPane contentContainer; // Головний контейнер для вмісту
-    @FXML
-    private MFXButton btnCreateEvent;
+    private AnchorPane contentContainer;
 
     private Coordinator coordinator;
+
     private List<Event> eventList = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         generateTestEvents();
-        showHome(); // Ініціалізація головного екрана
+        showHome();
     }
 
-    // Показати головний екран з картками подій
     private void showHome() {
         contentContainer.getChildren().clear();
         contentContainer.getChildren().add(gridPaneCoord);
-        populateGridPane();
-    }
-
-    public void setCoordinator(Coordinator coordinator) {
-        this.coordinator = coordinator;
         populateGridPane();
     }
 
@@ -77,7 +70,7 @@ public class CoordinatorDashboardController implements Initializable {
                 EventCardController controller = fxmlLoader.getController();
                 controller.setEvent(event);
                 controller.setParentContainer(contentContainer);
-                controller.setUserRole("Coordinator"); // Передаємо роль
+                controller.setUserRole("Coordinator");
 
                 gridPaneCoord.add(eventCard, col, row);
                 col++;
@@ -87,7 +80,7 @@ public class CoordinatorDashboardController implements Initializable {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                System.out.println("❌ Помилка завантаження EventCard.fxml");
+                System.out.println("Error loading CreateEvent.fxml");
             }
         }
     }
@@ -102,61 +95,35 @@ public class CoordinatorDashboardController implements Initializable {
             contentContainer.getChildren().add(newContent);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("❌ Помилка завантаження CreateEvent.fxml");
+            System.out.println("Error loading CreateEvent.fxml");
         }
-    }
-
-    @FXML
-    public void cancelAction() {
-        showHome(); // Повернення на головний екран
     }
 
     @FXML
     private void goToHome(ActionEvent event) {
         showHome();
-        System.out.println("✅ Головний екран координатора оновлено");
-    }
-    @FXML
-    private void openTicket() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/TicketView.fxml"));
-            Parent root = loader.load();
-
-            TicketController controller = loader.getController();
-            controller.setDetails("EASV Party", "EASV Bar", LocalDate.of(2024, 4, 10), LocalTime.of(19, 0), "John Doe");
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Ticket");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println("Coordinator's main screen updated");
     }
 
     @FXML
     public void logOut(ActionEvent actionEvent) {
         try {
-            // Завантажуємо екран входу
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/LoginView.fxml"));
             Parent root = loader.load();
 
-            // Отримуємо поточне вікно
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-            // Створюємо нову сцену та додаємо стиль
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/dk/easv/myticketsevent/view/css/styles.css").toExternalForm());
 
-            // Встановлюємо сцену та показуємо вікно
             stage.setScene(scene);
             stage.setTitle("Login");
             stage.show();
 
-            System.out.println("✅ Координатор вийшов з системи.");
+            System.out.println("Coordinator logged out");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("❌ Помилка завантаження LoginView.fxml");
+            System.out.println("Error loading LoginView.fxml");
         }
     }
 

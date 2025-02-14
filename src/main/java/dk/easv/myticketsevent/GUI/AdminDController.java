@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -25,19 +24,17 @@ public class AdminDController implements Initializable {
     @FXML
     private GridPane gridPaneAdmin;
     @FXML
-    private AnchorPane contentContainer; // Головний контейнер для вмісту
-    @FXML
-    private Button createUserButton;
+    private AnchorPane contentContainer; // Main container for content
 
     private List<Event> eventList = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         generateTestEvents();
-        showHome(); // Ініціалізація головного екрана
+        showHome(); // Initialize the main screen
     }
 
-    // Показати головний екран з картками подій
+    // Display the main screen with event cards
     private void showHome() {
         contentContainer.getChildren().clear();
         contentContainer.getChildren().add(gridPaneAdmin);
@@ -68,7 +65,7 @@ public class AdminDController implements Initializable {
                 EventCardController controller = fxmlLoader.getController();
                 controller.setEvent(event);
                 controller.setParentContainer(contentContainer);
-                controller.setUserRole("Admin"); // Передаємо роль
+                controller.setUserRole("Admin");
 
                 gridPaneAdmin.add(eventCard, col, row);
                 col++;
@@ -78,7 +75,7 @@ public class AdminDController implements Initializable {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                System.out.println("❌ Помилка завантаження EventCard.fxml");
+                System.out.println("Error loading EventCard.fxml");
             }
         }
     }
@@ -92,39 +89,39 @@ public class AdminDController implements Initializable {
             contentContainer.getChildren().add(newContent);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("❌ Помилка завантаження CreateCoordinator.fxml");
+            System.out.println("Error loading CreateCoordinator.fxml");
         }
     }
 
     @FXML
     private void goToHome(ActionEvent event) {
-        showHome(); // Просте оновлення без зайвих завантажень
-        System.out.println("✅ Головний екран оновлено");
+        showHome();
+        System.out.println("Main screen updated");
     }
 
     @FXML
     public void logOutAdm(ActionEvent actionEvent) {
         try {
-            // Завантажуємо екран входу
+            // Load the login screen
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/myticketsevent/view/LoginView.fxml"));
             Parent root = loader.load();
 
-            // Отримуємо поточне вікно
+            // Get the current window
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-            // Створюємо нову сцену та додаємо стиль
+            // Create a new scene and apply styles
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/dk/easv/myticketsevent/view/css/styles.css").toExternalForm());
 
-            // Встановлюємо сцену та показуємо вікно
+            // Set the scene and show the window
             stage.setScene(scene);
             stage.setTitle("Login");
             stage.show();
 
-            System.out.println("✅ Адміністратор вийшов з системи.");
+            System.out.println(" Administrator logged out");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("❌ Помилка завантаження LoginView.fxml");
+            System.out.println("Error loading LoginView.fxml");
         }
     }
 
