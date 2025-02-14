@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="couponPane" prefHeight="400" prefWidth="600" stylesheets="@css/ticket.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.myticketsevent.GUI.CouponController">
 
-    <VBox alignment="TOP_CENTER" spacing="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
+    <VBox fx:id="couponContainer" alignment="TOP_CENTER" spacing="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
 
         <!-- Header Section -->
         <VBox alignment="CENTER" spacing="10" styleClass="header-box">

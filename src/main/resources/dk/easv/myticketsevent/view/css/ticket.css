@@ -1,96 +1,112 @@
-/* ticket-styles.css */
-
-/* Root container */
-.anchor-pane {
-    -fx-background-color: #f0f4f8;
+/* Головний контейнер купона */
+#couponPane {
+    -fx-background-color: #3B1D82; /* Темно-синій фон */
+    -fx-border-color: #FFD700; /* Жовта рамка */
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+    -fx-padding: 15px;
 }
 
-/* Header section */
+/* Внутрішній контейнер */
+#couponContainer {
+    -fx-background-color: #472A91; /* Темно-фіолетовий блок */
+    -fx-background-radius: 15px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 0, 0);
+}
+
+/* Заголовок купона */
 .header-box {
-    -fx-spacing: 10;
+    -fx-background-color: #5E36A0; /* Темно-фіолетовий */
+    -fx-padding: 15px;
+    -fx-background-radius: 10px;
     -fx-alignment: center;
 }
 
+/* Логотип */
 .logo {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 0, 0);
 }
 
+/* Заголовок тексту */
 .header-label {
-    -fx-text-fill: #2d3748;
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
     -fx-font-weight: bold;
-    -fx-font-size: 24px;
 }
 
-/* Ticket content */
+/* Основний блок купона */
 .ticket-content {
-    -fx-background-color: white;
-    -fx-background-radius: 15;
-    -fx-padding: 25;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0.5, 0, 0);
-    -fx-spacing: 30;
+    -fx-background-color: #472A91; /* Фіолетовий блок */
+    -fx-background-radius: 15px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 0, 0);
 }
 
+/* Назва події */
 .event-name {
-    -fx-text-fill: #2d3748;
+    -fx-text-fill: #FFD700; /* Жовтий */
     -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
 
+/* Заголовки полів */
 .detail-label {
-    -fx-text-fill: #718096;
+    -fx-text-fill: #C5A200; /* Темно-жовтий */
     -fx-font-weight: bold;
     -fx-font-size: 14px;
 }
 
+/* Значення полів */
 .value-label {
-    -fx-text-fill: #4a5568;
-    -fx-font-size: 14px;
-}
-
-.separator-line {
-    -fx-stroke: #cbd5e0;
-    -fx-stroke-width: 1;
-}
-
-/* Participant info */
-.participant-label {
-    -fx-text-fill: #2d3748;
-    -fx-font-weight: bold;
-    -fx-font-size: 16px;
-}
-
-/* QR and Barcode */
-.qr-code {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.5, 0, 0);
-}
-
-.barcode {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 3, 0.5, 0, 0);
-}
-
-/* Footer section */
-.print-button {
-    -fx-background-color: #4299e1;
     -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 8;
-    -fx-padding: 10 25;
     -fx-font-size: 14px;
+}
+
+/* Лінії розділення */
+.separator-line {
+    -fx-stroke: #FFD700;
+    -fx-stroke-width: 1.5;
+}
+
+/* QR-код */
+.qr-code {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, 0, 0);
+}
+
+/* Кнопка друку */
+.print-button {
+    -fx-background-color: #E0A800;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px 25px;
+    -fx-border-color: #C5A200;
+    -fx-border-width: 2px;
 }
 
 .print-button:hover {
-    -fx-background-color: #3182ce;
+    -fx-background-color: #FFC107;
     -fx-cursor: hand;
 }
 
+.print-button:pressed {
+    -fx-background-color: #FFB300;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* Текст внизу */
 .footer-text {
-    -fx-text-fill: #718096;
+    -fx-text-fill: white;
     -fx-font-size: 12px;
 }
 
-/* Decorative elements */
+/* Позначка "Valid Coupon" */
 .valid-label {
-    -fx-text-fill: #48bb78;
+    -fx-text-fill: #48BB78;
     -fx-font-weight: bold;
+    -fx-font-size: 14px;
     -fx-rotate: 15;
 }
