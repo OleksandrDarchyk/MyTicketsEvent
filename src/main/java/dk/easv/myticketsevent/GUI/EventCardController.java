@@ -8,7 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -92,4 +94,25 @@ public class EventCardController {
     public void deleteEvent(ActionEvent actionEvent) {
         System.out.println("🗑 Видалення події: " + event.getName());
     }
+
+    @FXML
+    private void showExtraInformation(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Extra Information");
+        alert.setHeaderText(eventNamelbl.getText());
+        alert.setContentText("📍 Location: " + eventLocationlbl.getText() + "\n" +
+                "🕒 Date & Time: " + eventTimelbl.getText() + "\n" +
+                "ℹ️ Additional details about this event will be added later.");
+
+        // Отримуємо діалогове вікно (DialogPane)
+        DialogPane dialogPane = alert.getDialogPane();
+
+        // Додаємо стилі
+        dialogPane.getStylesheets().add(getClass().getResource("/dk/easv/myticketsevent/view/css/styles.css").toExternalForm());
+        dialogPane.getStyleClass().add("custom-alert");
+
+        alert.showAndWait();
+    }
+
+
 }

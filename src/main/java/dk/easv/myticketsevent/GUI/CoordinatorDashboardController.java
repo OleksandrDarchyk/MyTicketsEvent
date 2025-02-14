@@ -57,6 +57,11 @@ public class CoordinatorDashboardController implements Initializable {
         eventList.add(new Event("Live Music Night", "EASV Bar", "2024-04-12 20:00"));
         eventList.add(new Event("Movie Night", "Auditorium", "2024-04-18 19:30"));
         eventList.add(new Event("Board Games Evening", "Cafeteria", "2024-04-25 18:00"));
+        eventList.add(new Event("Jazz Night", "EASV Lounge", "2024-05-05 20:00"));
+        eventList.add(new Event("Startup Pitch", "Auditorium", "2024-05-12 16:00"));
+        eventList.add(new Event("Gaming Tournament", "Room B1", "2024-05-18 14:30"));
+        eventList.add(new Event("Summer Festival", "Outdoor Stage", "2024-06-01 18:00"));
+
     }
 
     public void populateGridPane() {

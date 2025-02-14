@@ -48,7 +48,7 @@
       </VBox>
 
       <!-- Додаткова інформація -->
-      <Button layoutY="140.0" text="Extra Information" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" styleClass="button" />
+      <Button layoutY="140.0" text="Extra Information" onAction="#showExtraInformation" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" styleClass="button" />
 
       <!-- Кнопка видалення -->
       <Button fx:id="deleteBtn" alignment="CENTER_RIGHT" onAction="#deleteEvent" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="button">

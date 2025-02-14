@@ -51,3 +51,45 @@
     -fx-background-color: #5E36A0; /* Трохи світліший фіолетовий */
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 15, 0.2, 3, 3);
 }
+.custom-alert {
+    -fx-background-color: #472A91; /* Фон темно-фіолетовий */
+    -fx-border-color: #FFD700; /* Жовта рамка */
+    -fx-border-width: 2px;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+}
+
+.custom-alert .header-panel {
+    -fx-background-color: #5E36A0; /* Трохи світліший заголовок */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.custom-alert .content {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.custom-alert .button-bar {
+    -fx-background-color: #3B1D82; /* Фон кнопок */
+}
+
+.custom-alert .button {
+    -fx-background-color: #E0A800;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-color: #C5A200;
+    -fx-border-width: 2px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.custom-alert .button:hover {
+    -fx-background-color: #FFC107;
+}
+
+.custom-alert .button:pressed {
+    -fx-background-color: #FFB300;
+}

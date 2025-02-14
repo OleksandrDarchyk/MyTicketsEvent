@@ -48,6 +48,11 @@ public class AdminDController implements Initializable {
         eventList.add(new Event("EASV Party", "EASV Bar", "2024-04-10 19:00"));
         eventList.add(new Event("Wine Tasting", "Main Hall", "2024-04-15 18:30"));
         eventList.add(new Event("Coding Workshop", "Room C3", "2024-04-20 14:00"));
+        eventList.add(new Event("Jazz Night", "EASV Lounge", "2024-05-05 20:00"));
+        eventList.add(new Event("Startup Pitch", "Auditorium", "2024-05-12 16:00"));
+        eventList.add(new Event("Gaming Tournament", "Room B1", "2024-05-18 14:30"));
+        eventList.add(new Event("Summer Festival", "Outdoor Stage", "2024-06-01 18:00"));
+
     }
 
     public void populateGridPane() {
