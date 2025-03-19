@@ -99,4 +99,7 @@ public class CreateEventController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    public void gitHubTest(){
+        System.out.println("GitHub Test");
+    }
 }

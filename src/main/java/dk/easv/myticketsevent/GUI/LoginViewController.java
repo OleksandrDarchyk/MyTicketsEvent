@@ -34,7 +34,11 @@ public class LoginViewController {
         } else if ("c".equals(username) && "123".equals(password)) {
             openDashboard("/dk/easv/myticketsevent/view/CoordinatorDashboard.fxml", "Coordinator Dashboard");
         } else {
-            System.out.println("Wrong username or password12345");
+
+
+            System.out.println("Wrong username or password123");
+
+
         }
     }
 
@@ -71,6 +75,8 @@ public class LoginViewController {
             System.out.println("Error loading: " + fxmlPath);
         }
     }
-
+public void workWithGit(){
+    System.out.println("learn to merge123");
+}
 
 }
