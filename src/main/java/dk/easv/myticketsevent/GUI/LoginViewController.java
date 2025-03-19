@@ -73,6 +73,8 @@ public class LoginViewController {
             System.out.println("Error loading: " + fxmlPath);
         }
     }
-
+public void workWithGit(){
+    System.out.println("learn to merge");
+}
 
 }
