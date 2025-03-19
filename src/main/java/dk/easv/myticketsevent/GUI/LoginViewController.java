@@ -35,7 +35,9 @@ public class LoginViewController {
             openDashboard("/dk/easv/myticketsevent/view/CoordinatorDashboard.fxml", "Coordinator Dashboard");
         } else {
 
+
             System.out.println("Wrong username or password123");
+
 
         }
     }
