@@ -74,7 +74,7 @@ public class LoginViewController {
         }
     }
 public void workWithGit(){
-    System.out.println("learn to merge");
+    System.out.println("learn to merge123");
 }
 
 }
